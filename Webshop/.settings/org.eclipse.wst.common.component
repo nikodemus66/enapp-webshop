@@ -16,5 +16,8 @@
         <dependent-module archiveName="WebShopCommon.jar" deploy-path="/lib" handle="module:/resource/WebShopCommon/WebShopCommon">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="WebshopCommon.jar" deploy-path="/lib" handle="module:/resource/WebshopCommon/WebshopCommon">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
