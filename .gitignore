@@ -1,0 +1,6 @@
+WebshopClient/build
+WebshopCommon/build
+WebshopEJB/build
+WebshopEJB/buildTest
+WebshopWeb/WEB-INF/classes
+/EatMeMineExports/
