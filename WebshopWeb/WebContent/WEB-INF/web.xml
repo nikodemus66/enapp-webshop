@@ -50,6 +50,10 @@
 		<param-name>org.apache.myfaces.AUTO_SCROLL</param-name>
 		<param-value>true</param-value>
 	</context-param>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
 	<listener>
 		<listener-class>org.apache.myfaces.webapp.StartupServletContextListener</listener-class>
 	</listener>
@@ -60,11 +64,10 @@
 		<enabled>true</enabled>
 		<async-supported>false</async-supported>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>
-		/faces/*</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
 	<welcome-file-list>
 	    <welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
