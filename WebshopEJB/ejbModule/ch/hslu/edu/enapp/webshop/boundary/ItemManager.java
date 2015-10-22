@@ -10,20 +10,21 @@ import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateful;
+import javax.ejb.Stateless;
 
 /**
  * Session Bean implementation class ShoppingBasketService
  */
-@Stateful
+@Stateless
 @Local(ShoppingBasketServiceLocal.class)
-@Remote(ShoppingBasketServiceRemote.class)
-public class ShoppingBasketService implements ShoppingBasketServiceRemote, ShoppingBasketServiceLocal {
+//@Remote(ShoppingBasketServiceRemote.class)
+public class ItemManager implements ShoppingBasketServiceRemote, ShoppingBasketServiceLocal {
     private ArrayList<ProductDTO> shoppingBasket;
     
     /**
      * Default constructor. 
      */
-    public ShoppingBasketService() {
+    public ItemManager() {
         shoppingBasket = new ArrayList();
     }
 
