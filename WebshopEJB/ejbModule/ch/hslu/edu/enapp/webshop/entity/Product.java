@@ -1,8 +1,11 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 
 /**
@@ -70,4 +73,29 @@ public class Product implements Serializable {
 		this.unitprice = unitprice;
 	}
 
+	//bi-directional many-to-one association to Purchaseitem
+	   @OneToMany(mappedBy="productBean")
+	   private List<Purchaseitem> purchaseitems;
+	//...
+	   public List<Purchaseitem> getPurchaseitems() {
+	      return this.purchaseitems;
+	   }
+
+	   public void setPurchaseitems(List<Purchaseitem> purchaseitems) {
+	      this.purchaseitems = purchaseitems;
+	   }
+
+	   public Purchaseitem addPurchaseitem(Purchaseitem purchaseitem) {
+	      getPurchaseitems().add(purchaseitem);
+	      purchaseitem.setProductBean(this);
+
+	      return purchaseitem;
+	   }
+
+	   public Purchaseitem removePurchaseitem(Purchaseitem purchaseitem) {
+	      getPurchaseitems().remove(purchaseitem);
+	      purchaseitem.setProductBean(null);
+
+	      return purchaseitem;
+	   }
 }

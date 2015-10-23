@@ -1,8 +1,11 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Timestamp;
+import java.util.List;
 
 
 /**
@@ -14,11 +17,18 @@ import java.sql.Timestamp;
 public class Purchase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+   //bi-directional many-to-one association to Customer
+   @ManyToOne
+   @JoinColumn(name="CUSTOMER")
+   private Customer customerBean;	
+
+   //bi-directional many-to-one association to Purchaseitem
+   @OneToMany(mappedBy="purchaseBean")
+   private List<Purchaseitem> purchaseitems;
+   
 	@Id
 	@Column(name="\"ID\"")
 	private int id;
-
-	private int customer;
 
 	private Timestamp datetime;
 
@@ -34,14 +44,6 @@ public class Purchase implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getCustomer() {
-		return this.customer;
-	}
-
-	public void setCustomer(int customer) {
-		this.customer = customer;
 	}
 
 	public Timestamp getDatetime() {
@@ -60,4 +62,33 @@ public class Purchase implements Serializable {
 		this.state = state;
 	}
 
+	   public Customer getCustomerBean() {
+	      return this.customerBean;
+	   }
+
+	   public void setCustomerBean(Customer customerBean) {
+	      this.customerBean = customerBean;
+	   }
+
+	   public List<Purchaseitem> getPurchaseitems() {
+	      return this.purchaseitems;
+	   }
+
+	   public void setPurchaseitems(List<Purchaseitem> purchaseitems) {
+	      this.purchaseitems = purchaseitems;
+	   }
+
+	   public Purchaseitem addPurchaseitem(Purchaseitem purchaseitem) {
+	      getPurchaseitems().add(purchaseitem);
+	      purchaseitem.setPurchaseBean(this);
+
+	      return purchaseitem;
+	   }
+
+	   public Purchaseitem removePurchaseitem(Purchaseitem purchaseitem) {
+	      getPurchaseitems().remove(purchaseitem);
+	      purchaseitem.setPurchaseBean(null);
+
+	      return purchaseitem;
+	   }
 }

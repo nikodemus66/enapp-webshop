@@ -1,6 +1,8 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -81,4 +83,30 @@ public class Customer implements Serializable {
 		this.username = username;
 	}
 
+	   //bi-directional many-to-one association to Purchase
+	   @OneToMany(mappedBy="customerBean")
+	   private List<Purchase> purchases;
+	//...
+	   public List<Purchase> getPurchases() {
+	      return this.purchases;
+	   }
+
+	   public void setPurchases(List<Purchase> purchases) {
+	      this.purchases = purchases;
+	   }
+
+	   public Purchase addPurchas(Purchase purchas) {
+	      getPurchases().add(purchas);
+	      purchas.setCustomerBean(this);
+
+	      return purchas;
+	   }
+
+	   public Purchase removePurchas(Purchase purchas) {
+	      getPurchases().remove(purchas);
+	      purchas.setCustomerBean(null);
+
+	      return purchas;
+	   }
+	
 }
