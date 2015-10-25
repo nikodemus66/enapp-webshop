@@ -11,7 +11,11 @@
         <h2>Verfügbare Produkte</h2>
         <h:form id="products">
             <ui:repeat value="#{itemMBean.items}" var="item">
-                <p><h:outputFormat id="item" styleClass="outputFormat" value="#{item.name}"/></p>
+                <p><h:outputText value="#{item.name}"/><br>
+                   <h:outputText value="#{item.description}"/><br>
+                   <h:outputText value="#{item.mediapath}"/><br>
+                   <h:outputText value="#{item.unitprice}"/>
+                </p>
             </ui:repeat>
         </h:form>   
     </ui:define>
