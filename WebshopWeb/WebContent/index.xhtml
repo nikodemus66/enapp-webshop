@@ -8,6 +8,11 @@
     template="resources/templates/template.xhtml">
 
     <ui:define name="content">
-        <h:outputText value="#{itemMBean.testMe}"></h:outputText>   
+        <h2>Verfügbare Produkte</h2>
+        <h:form id="products">
+            <ui:repeat value="#{itemMBean.items}" var="item">
+                <p><h:outputFormat id="item" styleClass="outputFormat" value="#{item.name}"/></p>
+            </ui:repeat>
+        </h:form>   
     </ui:define>
 </ui:composition>
