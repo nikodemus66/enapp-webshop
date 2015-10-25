@@ -9,7 +9,6 @@ import ch.hslu.edu.enapp.webshop.entity.Customer;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;

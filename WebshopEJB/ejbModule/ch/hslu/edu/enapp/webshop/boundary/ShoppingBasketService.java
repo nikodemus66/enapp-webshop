@@ -23,7 +23,7 @@ public class ShoppingBasketService implements ShoppingBasketServiceRemote, Shopp
      * Default constructor. 
      */
     public ShoppingBasketService() {
-        shoppingBasket = new ArrayList();
+        shoppingBasket = new ArrayList<ProductDTO>();
     }
 
     @Override

@@ -1,12 +1,10 @@
 package ch.hslu.edu.enapp.webshop.boundary;
 
+import javax.ejb.Local;
+import javax.ejb.Stateless;
+
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerRemote;
-
-import javax.ejb.Local;
-import javax.ejb.Remote;
-import javax.ejb.Stateful;
-import javax.ejb.Stateless;
 
 /**
  * Session Bean implementation class PurchaseManager
