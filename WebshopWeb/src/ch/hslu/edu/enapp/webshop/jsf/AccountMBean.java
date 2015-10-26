@@ -9,9 +9,12 @@ import javax.inject.Named;
 @SessionScoped
 public class AccountMBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private final String testMe = "Hello World 2";
     
-    public String getTestMe() {
-        return testMe;
+    public void login() {
+        
+    }
+    
+    public void logout() {
+        
     }
 }

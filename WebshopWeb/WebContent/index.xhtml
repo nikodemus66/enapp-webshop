@@ -7,16 +7,54 @@
     xmlns:p="http://primefaces.org/ui"
     template="resources/templates/template.xhtml">
 
+    <ui:define name="header">
+        <h1>MP3-Webshop</h1>
+    </ui:define>
+
     <ui:define name="content">
-        <h2>Verfügbare Produkte</h2>
-        <h:form id="products">
-            <ui:repeat value="#{itemMBean.items}" var="item">
-                <p><h:outputText value="#{item.name}"/><br></br>
-                   <h:outputText value="#{item.description}"/><br></br>
-                   <h:outputText value="#{item.mediapath}"/><br></br>
-                   <h:outputText value="#{item.unitprice}"/>
-                </p>
-            </ui:repeat>
-        </h:form>   
+        <div id="login">
+        <h2>Login</h2>
+        <form>
+                <input type="submit" value="Login"/>
+            </form>
+        </div>
+        <div id="products">
+            <h2>Verfügbare Produkte</h2>
+            <h:form id="productlist">
+                <ui:repeat value="#{itemMBean.items}" var="item">
+                    <p><h:outputText value="#{item.name}"/><br></br>
+                       <h:outputText value="#{item.description}"/><br></br>
+                       <h:outputText value="#{item.mediapath}"/><br></br>
+                       <h:outputText value="#{item.unitprice}"/><br></br>
+                       <h:commandButton
+                            type="submit"
+                            value="Add to Basket"
+                            styleClass="btn btn-sm btn-default"
+                            action="#{basketBean.addItem(item)}">
+                           <f:ajax render="right:shoppingList" />
+                        </h:commandButton>
+                    </p>
+                </ui:repeat>
+            </h:form>
+        </div>
+        <div id ="basket">
+            <h2>Warenkorb</h2>
+            <h:form id="basketproducts">
+                <ui:repeat value="#{basketBean.allItems}" var="item">
+                    <p><h:outputText value="#{item.name}"/><br></br>
+                       <h:outputText value="#{item.description}"/><br></br>
+                       <h:outputText value="#{item.mediapath}"/><br></br>
+                       <h:outputText value="#{item.unitprice}"/><br></br>
+                       <h:commandButton
+                            type="submit"
+                            value="Remove"
+                            styleClass="btn btn-sm btn-default"
+                            action="#{basketBean.removeItem(item)}">
+                           <f:ajax render="right:shoppingList" />
+                        </h:commandButton>
+                    </p>
+                </ui:repeat>
+            </h:form>
+        </div>   
     </ui:define>
 </ui:composition>
