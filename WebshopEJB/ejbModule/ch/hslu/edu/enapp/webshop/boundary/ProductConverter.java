@@ -6,15 +6,27 @@ import ch.hslu.edu.enapp.webshop.entity.Product;
 public class ProductConverter {
 
     public static ProductDTO createDTOFromEntity(final Product product) {
-        final ProductDTO ProductDTOReturn = new ProductDTO();
+        final ProductDTO productDTOReturn = new ProductDTO();
         
-        ProductDTOReturn.setId(product.getId());
-        ProductDTOReturn.setName(product.getName());
-        ProductDTOReturn.setDescription(product.getDescription());
-        ProductDTOReturn.setMediapath(product.getMediapath());
-        ProductDTOReturn.setUnitprice(product.getUnitprice());
+        productDTOReturn.setId(product.getId());
+        productDTOReturn.setName(product.getName());
+        productDTOReturn.setDescription(product.getDescription());
+        productDTOReturn.setMediapath(product.getMediapath());
+        productDTOReturn.setUnitprice(product.getUnitprice());
         
-        return ProductDTOReturn;
+        return productDTOReturn;
+    }
+    
+    public static Product createEntityFromDTO(final ProductDTO product) {
+        final Product productReturn = new Product();
+        
+        productReturn.setId(product.getId());
+        productReturn.setName(product.getName());
+        productReturn.setDescription(product.getDescription());
+        productReturn.setMediapath(product.getMediapath());
+        productReturn.setUnitprice(product.getUnitprice());
+        
+        return productReturn;
     }
 
 }

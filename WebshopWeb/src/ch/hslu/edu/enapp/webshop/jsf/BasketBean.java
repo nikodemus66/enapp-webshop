@@ -31,4 +31,8 @@ public class BasketBean implements Serializable{
         basket.remove(product);
     }
     
+    public void clearBasket() {
+        basket.clear();
+    }
+    
 }
