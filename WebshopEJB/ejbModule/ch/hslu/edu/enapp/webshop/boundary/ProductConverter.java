@@ -8,7 +8,7 @@ public class ProductConverter {
     public static ProductDTO createDTOFromEntity(final Product product) {
         final ProductDTO productDTOReturn = new ProductDTO();
         
-        productDTOReturn.setId(product.getId());
+        productDTOReturn.setId(product.getProductid());
         productDTOReturn.setName(product.getName());
         productDTOReturn.setDescription(product.getDescription());
         productDTOReturn.setMediapath(product.getMediapath());
@@ -20,7 +20,7 @@ public class ProductConverter {
     public static Product createEntityFromDTO(final ProductDTO product) {
         final Product productReturn = new Product();
         
-        productReturn.setId(product.getId());
+        productReturn.setProductid(product.getId());
         productReturn.setName(product.getName());
         productReturn.setDescription(product.getDescription());
         productReturn.setMediapath(product.getMediapath());

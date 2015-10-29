@@ -15,7 +15,7 @@ public class UsergroupPK implements Serializable {
 	private int iduser;
 
 	@Column(insertable=false, updatable=false)
-	private int idauthgroup;
+	private int idgroup;
 
 	public UsergroupPK() {
 	}
@@ -25,11 +25,11 @@ public class UsergroupPK implements Serializable {
 	public void setIduser(int iduser) {
 		this.iduser = iduser;
 	}
-	public int getIdauthgroup() {
-		return this.idauthgroup;
+	public int getIdgroup() {
+		return this.idgroup;
 	}
-	public void setIdauthgroup(int idauthgroup) {
-		this.idauthgroup = idauthgroup;
+	public void setIdgroup(int idgroup) {
+		this.idgroup = idgroup;
 	}
 
 	public boolean equals(Object other) {
@@ -42,14 +42,14 @@ public class UsergroupPK implements Serializable {
 		UsergroupPK castOther = (UsergroupPK)other;
 		return 
 			(this.iduser == castOther.iduser)
-			&& (this.idauthgroup == castOther.idauthgroup);
+			&& (this.idgroup == castOther.idgroup);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.iduser;
-		hash = hash * prime + this.idauthgroup;
+		hash = hash * prime + this.idgroup;
 		
 		return hash;
 	}

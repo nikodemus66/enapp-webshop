@@ -43,6 +43,13 @@ public class ItemManager implements ItemManagerLocal {
             productDtos.add(ProductConverter.createDTOFromEntity(product));
         }      
         
+        // Debug
+        ProductDTO pr = new ProductDTO();
+        pr.setName("debug");
+        pr.setDescription("Greift nicht auf die DB zu, sondern ist nur ein Dummy");
+        
+        productDtos.add(pr);
+        
         return productDtos;
     }
 }

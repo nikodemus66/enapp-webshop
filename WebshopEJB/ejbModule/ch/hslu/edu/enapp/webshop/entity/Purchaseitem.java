@@ -14,19 +14,8 @@ import java.math.BigDecimal;
 public class Purchaseitem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	//bi-directional many-to-one association to Product
-	   @ManyToOne
-	   @JoinColumn(name="PRODUCT")
-	   private Product productBean;
-
-	   //bi-directional many-to-one association to Purchase
-	   @ManyToOne
-	   @JoinColumn(name="PURCHASE")
-	   private Purchase purchaseBean;
-	
 	@Id
-	@Column(name="\"ID\"")
-	private int id;
+	private int purchaseitemid;
 
 	private String description;
 
@@ -34,15 +23,25 @@ public class Purchaseitem implements Serializable {
 
 	private BigDecimal unitprice;
 
+	//bi-directional many-to-one association to Product
+	@ManyToOne
+	@JoinColumn(name="PRODUCT")
+	private Product productBean;
+
+	//bi-directional many-to-one association to Purchase
+	@ManyToOne
+	@JoinColumn(name="PURCHASE")
+	private Purchase purchaseBean;
+
 	public Purchaseitem() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getPurchaseitemid() {
+		return this.purchaseitemid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPurchaseitemid(int purchaseitemid) {
+		this.purchaseitemid = purchaseitemid;
 	}
 
 	public String getDescription() {
@@ -69,20 +68,20 @@ public class Purchaseitem implements Serializable {
 		this.unitprice = unitprice;
 	}
 
-	 public Product getProductBean() {
-	      return this.productBean;
-	   }
+	public Product getProductBean() {
+		return this.productBean;
+	}
 
-	   public void setProductBean(Product productBean) {
-	      this.productBean = productBean;
-	   }
+	public void setProductBean(Product productBean) {
+		this.productBean = productBean;
+	}
 
-	   public Purchase getPurchaseBean() {
-	      return this.purchaseBean;
-	   }
+	public Purchase getPurchaseBean() {
+		return this.purchaseBean;
+	}
 
-	   public void setPurchaseBean(Purchase purchaseBean) {
-	      this.purchaseBean = purchaseBean;
-	   }
-	
+	public void setPurchaseBean(Purchase purchaseBean) {
+		this.purchaseBean = purchaseBean;
+	}
+
 }

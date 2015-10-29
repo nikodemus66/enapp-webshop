@@ -1,9 +1,7 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -17,33 +15,32 @@ import java.util.List;
 public class Purchase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-   //bi-directional many-to-one association to Customer
-   @ManyToOne
-   @JoinColumn(name="CUSTOMER")
-   private Customer customerBean;	
-
-   //bi-directional many-to-one association to Purchaseitem
-   @OneToMany(mappedBy="purchaseBean")
-   private List<Purchaseitem> purchaseitems;
-   
 	@Id
-	@Column(name="\"ID\"")
-	private int id;
+	private int purchaseid;
 
 	private Timestamp datetime;
 
 	@Column(name="\"STATE\"")
 	private String state;
 
+	//bi-directional many-to-one association to Customer
+	@ManyToOne
+	@JoinColumn(name="CUSTOMER")
+	private Customer customerBean;
+
+	//bi-directional many-to-one association to Purchaseitem
+	@OneToMany(mappedBy="purchaseBean")
+	private List<Purchaseitem> purchaseitems;
+
 	public Purchase() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getPurchaseid() {
+		return this.purchaseid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPurchaseid(int purchaseid) {
+		this.purchaseid = purchaseid;
 	}
 
 	public Timestamp getDatetime() {
@@ -62,33 +59,34 @@ public class Purchase implements Serializable {
 		this.state = state;
 	}
 
-	   public Customer getCustomerBean() {
-	      return this.customerBean;
-	   }
+	public Customer getCustomerBean() {
+		return this.customerBean;
+	}
 
-	   public void setCustomerBean(Customer customerBean) {
-	      this.customerBean = customerBean;
-	   }
+	public void setCustomerBean(Customer customerBean) {
+		this.customerBean = customerBean;
+	}
 
-	   public List<Purchaseitem> getPurchaseitems() {
-	      return this.purchaseitems;
-	   }
+	public List<Purchaseitem> getPurchaseitems() {
+		return this.purchaseitems;
+	}
 
-	   public void setPurchaseitems(List<Purchaseitem> purchaseitems) {
-	      this.purchaseitems = purchaseitems;
-	   }
+	public void setPurchaseitems(List<Purchaseitem> purchaseitems) {
+		this.purchaseitems = purchaseitems;
+	}
 
-	   public Purchaseitem addPurchaseitem(Purchaseitem purchaseitem) {
-	      getPurchaseitems().add(purchaseitem);
-	      purchaseitem.setPurchaseBean(this);
+	public Purchaseitem addPurchaseitem(Purchaseitem purchaseitem) {
+		getPurchaseitems().add(purchaseitem);
+		purchaseitem.setPurchaseBean(this);
 
-	      return purchaseitem;
-	   }
+		return purchaseitem;
+	}
 
-	   public Purchaseitem removePurchaseitem(Purchaseitem purchaseitem) {
-	      getPurchaseitems().remove(purchaseitem);
-	      purchaseitem.setPurchaseBean(null);
+	public Purchaseitem removePurchaseitem(Purchaseitem purchaseitem) {
+		getPurchaseitems().remove(purchaseitem);
+		purchaseitem.setPurchaseBean(null);
 
-	      return purchaseitem;
-	   }
+		return purchaseitem;
+	}
+
 }

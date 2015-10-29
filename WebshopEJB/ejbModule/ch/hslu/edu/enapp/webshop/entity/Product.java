@@ -1,9 +1,7 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,8 +16,7 @@ public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"ID\"")
-	private int id;
+	private int productid;
 
 	private String description;
 
@@ -30,15 +27,19 @@ public class Product implements Serializable {
 
 	private BigDecimal unitprice;
 
+	//bi-directional many-to-one association to Purchaseitem
+	@OneToMany(mappedBy="productBean")
+	private List<Purchaseitem> purchaseitems;
+
 	public Product() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getProductid() {
+		return this.productid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setProductid(int productid) {
+		this.productid = productid;
 	}
 
 	public String getDescription() {
@@ -73,29 +74,26 @@ public class Product implements Serializable {
 		this.unitprice = unitprice;
 	}
 
-	//bi-directional many-to-one association to Purchaseitem
-	   @OneToMany(mappedBy="productBean")
-	   private List<Purchaseitem> purchaseitems;
-	//...
-	   public List<Purchaseitem> getPurchaseitems() {
-	      return this.purchaseitems;
-	   }
+	public List<Purchaseitem> getPurchaseitems() {
+		return this.purchaseitems;
+	}
 
-	   public void setPurchaseitems(List<Purchaseitem> purchaseitems) {
-	      this.purchaseitems = purchaseitems;
-	   }
+	public void setPurchaseitems(List<Purchaseitem> purchaseitems) {
+		this.purchaseitems = purchaseitems;
+	}
 
-	   public Purchaseitem addPurchaseitem(Purchaseitem purchaseitem) {
-	      getPurchaseitems().add(purchaseitem);
-	      purchaseitem.setProductBean(this);
+	public Purchaseitem addPurchaseitem(Purchaseitem purchaseitem) {
+		getPurchaseitems().add(purchaseitem);
+		purchaseitem.setProductBean(this);
 
-	      return purchaseitem;
-	   }
+		return purchaseitem;
+	}
 
-	   public Purchaseitem removePurchaseitem(Purchaseitem purchaseitem) {
-	      getPurchaseitems().remove(purchaseitem);
-	      purchaseitem.setProductBean(null);
+	public Purchaseitem removePurchaseitem(Purchaseitem purchaseitem) {
+		getPurchaseitems().remove(purchaseitem);
+		purchaseitem.setProductBean(null);
 
-	      return purchaseitem;
-	   }
+		return purchaseitem;
+	}
+
 }

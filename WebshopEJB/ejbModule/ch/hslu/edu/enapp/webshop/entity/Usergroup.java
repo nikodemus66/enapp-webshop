@@ -16,11 +16,9 @@ public class Usergroup implements Serializable {
 	@EmbeddedId
 	private UsergroupPK id;
 
-	private String idgroup;
-
 	//bi-directional many-to-one association to Authgroup
 	@ManyToOne
-	@JoinColumn(name="IDAUTHGROUP")
+	@JoinColumn(name="IDGROUP")
 	private Authgroup authgroup;
 
 	public Usergroup() {
@@ -32,14 +30,6 @@ public class Usergroup implements Serializable {
 
 	public void setId(UsergroupPK id) {
 		this.id = id;
-	}
-
-	public String getIdgroup() {
-		return this.idgroup;
-	}
-
-	public void setIdgroup(String idgroup) {
-		this.idgroup = idgroup;
 	}
 
 	public Authgroup getAuthgroup() {

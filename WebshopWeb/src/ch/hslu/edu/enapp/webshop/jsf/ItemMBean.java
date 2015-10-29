@@ -20,4 +20,12 @@ public class ItemMBean implements Serializable {
     public List<ProductDTO> getItems() {
         return items.getItems();
     }
+    
+    public boolean getIsNull() {
+        return items == null;
+    }
+    
+    public String getName() {
+        return "Hello World!";
+    }
 }

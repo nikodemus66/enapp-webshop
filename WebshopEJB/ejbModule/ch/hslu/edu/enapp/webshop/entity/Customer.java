@@ -1,9 +1,8 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -16,8 +15,7 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="\"ID\"")
-	private int id;
+	private int customerid;
 
 	@Column(name="\"ADDRESS\"")
 	private String address;
@@ -32,15 +30,19 @@ public class Customer implements Serializable {
 
 	private String username;
 
+	//bi-directional many-to-one association to Purchase
+	@OneToMany(mappedBy="customerBean")
+	private List<Purchase> purchases;
+
 	public Customer() {
 	}
 
-	public int getId() {
-		return this.id;
+	public int getCustomerid() {
+		return this.customerid;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCustomerid(int customerid) {
+		this.customerid = customerid;
 	}
 
 	public String getAddress() {
@@ -83,30 +85,26 @@ public class Customer implements Serializable {
 		this.username = username;
 	}
 
-	   //bi-directional many-to-one association to Purchase
-	   @OneToMany(mappedBy="customerBean")
-	   private List<Purchase> purchases;
-	//...
-	   public List<Purchase> getPurchases() {
-	      return this.purchases;
-	   }
+	public List<Purchase> getPurchases() {
+		return this.purchases;
+	}
 
-	   public void setPurchases(List<Purchase> purchases) {
-	      this.purchases = purchases;
-	   }
+	public void setPurchases(List<Purchase> purchases) {
+		this.purchases = purchases;
+	}
 
-	   public Purchase addPurchas(Purchase purchas) {
-	      getPurchases().add(purchas);
-	      purchas.setCustomerBean(this);
+	public Purchase addPurchas(Purchase purchas) {
+		getPurchases().add(purchas);
+		purchas.setCustomerBean(this);
 
-	      return purchas;
-	   }
+		return purchas;
+	}
 
-	   public Purchase removePurchas(Purchase purchas) {
-	      getPurchases().remove(purchas);
-	      purchas.setCustomerBean(null);
+	public Purchase removePurchas(Purchase purchas) {
+		getPurchases().remove(purchas);
+		purchas.setCustomerBean(null);
 
-	      return purchas;
-	   }
-	
+		return purchas;
+	}
+
 }
