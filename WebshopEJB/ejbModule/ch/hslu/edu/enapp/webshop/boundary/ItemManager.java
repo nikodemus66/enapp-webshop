@@ -6,6 +6,7 @@ import java.util.List;
 
 import ch.hslu.edu.enapp.webshop.common.ItemManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
+import ch.hslu.edu.enapp.webshop.entity.Customer;
 import ch.hslu.edu.enapp.webshop.entity.Product;
 
 import javax.ejb.Local;
@@ -30,9 +31,9 @@ public class ItemManager implements ItemManagerLocal {
     }
 
     @Override
-    public List<ProductDTO> getItems() {
+    public List<ProductDTO> getItems() {       
         final List<Product> allProduct = entityManager.createNamedQuery(
-                "Product.findAll", Product.class).getResultList();        
+                "findAll", Product.class).getResultList();        
         
         Iterator<Product> productIterator = allProduct.iterator();
         List<ProductDTO> productDtos = new ArrayList<ProductDTO>();
@@ -42,13 +43,6 @@ public class ItemManager implements ItemManagerLocal {
             
             productDtos.add(ProductConverter.createDTOFromEntity(product));
         }      
-        
-        // Debug
-        ProductDTO pr = new ProductDTO();
-        pr.setName("debug");
-        pr.setDescription("Greift nicht auf die DB zu, sondern ist nur ein Dummy");
-        
-        productDtos.add(pr);
         
         return productDtos;
     }

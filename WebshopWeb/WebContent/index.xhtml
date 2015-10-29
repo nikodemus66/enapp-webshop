@@ -19,9 +19,7 @@
             </form>-->
         </div>
         <div id="products">
-            <h2>Verfügbare Produkte</h2>
-            <h:outputText value="#{itemMBean.isNull}"></h:outputText>Test
-            #{itemMBean.name}
+            <h2>Avaliable Products</h2>
             <h:form id="productlist">
                 <ui:repeat value="#{itemMBean.items}" var="item">
                     <p><h:outputText value="#{item.name}"/><br></br>
@@ -33,14 +31,13 @@
                             value="Add to Basket"
                             styleClass="btn btn-sm btn-default"
                             action="#{basketBean.addItem(item)}">
-                           <f:ajax render="right:shoppingList" />
                         </h:commandButton>
                     </p>
                 </ui:repeat>
             </h:form>
         </div>
         <div id ="basket">
-            <h2>Warenkorb</h2>
+            <h2>Shopping Basket</h2>
             <h:form id="basketproducts">
                 <ui:repeat value="#{basketBean.allItems}" var="item">
                     <p><h:outputText value="#{item.name}"/><br></br>
@@ -52,10 +49,18 @@
                             value="Remove"
                             styleClass="btn btn-sm btn-default"
                             action="#{basketBean.removeItem(item)}">
-                           <f:ajax render="right:shoppingList" />
                         </h:commandButton>
                     </p>
                 </ui:repeat>
+            </h:form>
+            <h3>Purchase</h3>
+            <h:form id="purchase">
+                <h:commandButton
+                            type="submit"
+                            value="Purchase"
+                            styleClass="btn btn-sm btn-default"
+                            action="#{basketBean.purchase}">
+                </h:commandButton>
             </h:form>
         </div>   
     </ui:define>

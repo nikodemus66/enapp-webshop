@@ -4,4 +4,8 @@
     <development xsi:type="connections:rsc-live-connection" id="enappwebshop_dev" name="enappwebshop"/>
     <runtime xsi:type="connections:datasource-connection" auto-deploy="true" class-location="/opt/ibm/db2/V10.5/java/db2jcc4.jar:/opt/ibm/db2/V10.5/java/db2jcc_license_cu.jar" id="enappwebshop_runtime" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" database-name="ENAPP" jndi-name="jdbc/enappwebshop" port-number="50001" resource-reference-name="enappwebshop" server-name="enapp-was146.el.eee.intern" sql-vendor-type="-1" userid="db2inst"/>
   </connection>
+  <connection id="ENAPP localhost">
+    <development xsi:type="connections:rsc-live-connection" id="ENAPP localhost_dev" name="ENAPP localhost"/>
+    <runtime xsi:type="connections:datasource-connection" auto-deploy="true" class-location="/opt/ibm/db2/V10.5/java/db2jcc4.jar:/opt/ibm/db2/V10.5/java/db2jcc_license_cu.jar" id="ENAPP localhost_runtime" classname="com.ibm.db2.jcc.DB2ConnectionPoolDataSource" database-name="ENAPP" jndi-name="jdbc/ENAPP localhost" port-number="50002" resource-reference-name="ENAPP localhost" server-name="localhost" sql-vendor-type="-1" userid="db2inst"/>
+  </connection>
 </connections:connections>

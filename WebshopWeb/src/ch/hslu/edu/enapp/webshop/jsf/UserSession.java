@@ -14,6 +14,10 @@ import javax.inject.Named;
 @SessionScoped
 public class UserSession implements Serializable{
     
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     private String username;
 
     @PostConstruct

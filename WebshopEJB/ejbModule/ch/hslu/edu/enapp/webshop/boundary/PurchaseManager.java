@@ -12,9 +12,11 @@ import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerRemote;
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
+
 import ch.hslu.edu.enapp.webshop.entity.Purchase;
 import ch.hslu.edu.enapp.webshop.entity.Purchaseitem;
 
+import ch.hslu.edu.enapp.webshop.common.exception.PurchaseException;
 /**
  * Session Bean implementation class PurchaseManager
  */
@@ -33,11 +35,11 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
     }
 
     @Override
-    public void purchase(CustomerDTO customerDto, List<ProductDTO> basket) {
+    public void purchase(CustomerDTO customerDto, List<ProductDTO> basket) throws PurchaseException {
         if (!basket.isEmpty()) {
             Iterator<ProductDTO> productIterator = basket.iterator();
            try {                        
-                entityManager.getTransaction().begin();
+//                entityManager.getTransaction().begin();
                 
                 Purchase purchase = new Purchase();
                 //TODO purchase.setCustomerBean(customer); CustomerConverter...
@@ -56,10 +58,11 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
                     purchase.addPurchaseitem(purchaseItem);
                 }
                 
-                entityManager.getTransaction().commit();
+//                entityManager.getTransaction().commit();
                 
         } catch(final Exception e) {
-            entityManager.getTransaction().rollback();
+//            entityManager.getTransaction().rollback();
+            throw new PurchaseException();
         }
      }
   }
