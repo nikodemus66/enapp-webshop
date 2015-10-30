@@ -1,7 +1,9 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -10,7 +12,9 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
+@NamedQueries(value = { @NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c"),
+@NamedQuery(name="Customer.findByName", query="SELECT c FROM Customer c WHERE c.name = :name") })
+
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -14,6 +14,7 @@ import javax.inject.Named;
 @SessionScoped
 public class UserSession implements Serializable{
     
+    
     /**
      * 
      */
@@ -32,5 +33,9 @@ public class UserSession implements Serializable{
         externalContext.invalidateSession();
         externalContext.redirect(externalContext.getRequestContextPath()
         + "/ibm_security_logout?logoutExitPage=/index.xhtml");
+    }
+    
+    public String getUsername() {
+        return this.username;
     }
 }

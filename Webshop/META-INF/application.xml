@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+	<display-name>Webshop</display-name>
+	<module id="Module_1446195525836">
+		<web>
+			<web-uri>WebshopWeb.war</web-uri>
+			<context-root>WebshopWeb</context-root>
+		</web>
+	</module>
+	<module id="Module_1446195525839">
+		<ejb>WebshopEJB.jar</ejb>
+	</module>
+	<module id="Module_1446195525840">
+		<java>WebshopClient.jar</java>
+	</module>
+</application>

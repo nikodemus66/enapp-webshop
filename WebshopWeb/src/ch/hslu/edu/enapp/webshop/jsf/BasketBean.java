@@ -23,6 +23,12 @@ public class BasketBean implements Serializable{
     @Inject
     ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal purchaseManager;
     
+//    @Inject
+//    ch.hslu.edu.enapp.webshop.jsf.AccountMBean account;
+    
+    @Inject
+    ch.hslu.edu.enapp.webshop.jsf.UserSession userSession;
+    
     private List<ProductDTO> basket;
     
     public BasketBean() {
@@ -46,13 +52,22 @@ public class BasketBean implements Serializable{
     }
     
     public void purchase() {
+        
+//        if (account.isLoggedIn())
+//        {
+//            // TODO the whole purchase process has to be here
+//        }
+//        else {
+//            //TODO Redirect to Login page
+//        }
+        
         // Test
-        CustomerDTO customer = new CustomerDTO();
-        customer.setId(1);
-        customer.setName("Test");
+//        CustomerDTO customer = new CustomerDTO();
+//        customer.setId(1);
+//        customer.setName("Test");
         
         try {
-            purchaseManager.purchase(customer, basket);
+            purchaseManager.purchase(userSession.getUsername(), basket);
             clearBasket();
         } catch (PurchaseException e) {
             // TODO Auto-generated catch block

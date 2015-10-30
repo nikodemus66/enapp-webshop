@@ -33,7 +33,7 @@ public class ItemManager implements ItemManagerLocal {
     @Override
     public List<ProductDTO> getItems() {       
         final List<Product> allProduct = entityManager.createNamedQuery(
-                "findAll", Product.class).getResultList();        
+                "Product.findAll", Product.class).getResultList();        
         
         Iterator<Product> productIterator = allProduct.iterator();
         List<ProductDTO> productDtos = new ArrayList<ProductDTO>();

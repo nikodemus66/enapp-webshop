@@ -2,15 +2,15 @@
     <wb-module deploy-name="Webshop">
         <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
         <dependent-module archiveName="WebshopWeb.war" deploy-path="/" handle="module:/resource/WebshopWeb/WebshopWeb">
-            <dependent-object>Module_1444936832568</dependent-object>
+            <dependent-object>Module_1446195525836</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="WebshopEJB.jar" deploy-path="/" handle="module:/resource/WebshopEJB/WebshopEJB">
-            <dependent-object>Module_1444936832569</dependent-object>
+            <dependent-object>Module_1446195525839</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="WebshopClient.jar" deploy-path="/" handle="module:/resource/WebshopClient/WebshopClient">
-            <dependent-object>Module_1444936832570</dependent-object>
+            <dependent-object>Module_1446195525840</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="WebShopCommon.jar" deploy-path="/lib" handle="module:/resource/WebShopCommon/WebShopCommon">
