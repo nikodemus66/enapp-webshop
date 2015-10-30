@@ -43,7 +43,7 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
                 Purchase purchase = new Purchase();
                 
                 Customer customer = (Customer) entityManager.createNamedQuery(
-                        "Customer.findByName", Customer.class).setParameter("name", customerName);
+                        "Customer.findByName", Customer.class).setParameter("username", customerName).getSingleResult();
                 
                 purchase.setCustomerBean(customer);
                

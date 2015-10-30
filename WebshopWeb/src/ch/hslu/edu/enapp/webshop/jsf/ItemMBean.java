@@ -1,8 +1,10 @@
 package ch.hslu.edu.enapp.webshop.jsf;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,19 +15,25 @@ import ch.hslu.edu.enapp.webshop.common.dto.*;
 @SessionScoped
 public class ItemMBean implements Serializable {
     
+    private List<ProductDTO> productList = new ArrayList<ProductDTO>();
+    
     @Inject
     ch.hslu.edu.enapp.webshop.common.ItemManagerLocal items;
     
+    @PostConstruct
+    public void init() {
+        getItems();
+    }
+    
     private static final long serialVersionUID = 1L;
     public List<ProductDTO> getItems() {
-        return items.getItems();
+        if (productList.isEmpty())
+            productList = items.getItems();
+        
+        return productList;
     }
     
-    public boolean getIsNull() {
-        return items == null;
-    }
-    
-    public String getName() {
-        return "Hello World!";
+    public int getItemCount() {
+        return productList.size();
     }
 }

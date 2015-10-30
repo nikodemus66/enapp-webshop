@@ -8,20 +8,18 @@
 
     <ui:define name="content">
         <div id="login">
-        <h2>Login</h2>
-        <h:form>
-            <h:commandButton value="Login" action="/secure/secured_index.xhtml?faces-
-redirect=true" ></h:commandButton>
-        </h:form>
+            <h:form>
+                <h:commandLink action="/secure/secured_index?faces-redirect=true" value="Login"></h:commandLink>
+            </h:form>
         </div>
         <div id="products">
-            <h2>Avaliable Products</h2>
+            <h2>Available Products (<h:outputText value="#{itemMBean.itemCount}" />)</h2>
             <h:form id="productlist">
-                <ui:repeat value="#{itemMBean.items}" var="item">
-                    <p><h:outputText value="#{item.name}"/><br></br>
-                       <h:outputText value="#{item.description}"/><br></br>
-                       <h:outputText value="#{item.mediapath}"/><br></br>
-                       <h:outputText value="#{item.unitprice}"/><br></br>
+                <ui:repeat value="#{itemMBean.items}" var="item"> <a> </a>
+                    <p><span padding="10"><h:outputText value="#{item.name}"/></span> 
+                       <span padding="10"><h:outputText value="#{item.description}"/></span>
+                       <span padding="10"><h:outputText value="#{item.mediapath}"/> </span>
+                       <span padding="10"><h:outputText value="#{item.unitprice}"/><br></br></span>
                        <h:commandButton
                             type="submit"
                             value="Add to Basket"
@@ -33,13 +31,13 @@ redirect=true" ></h:commandButton>
             </h:form>
         </div>
         <div id ="basket">
-            <h2>Shopping Basket</h2>
+            <h2>Shopping Basket (<h:outputText value="#{basketBean.productCount}" />)</h2>
             <h:form id="basketproducts">
                 <ui:repeat value="#{basketBean.allItems}" var="item">
-                    <p><h:outputText value="#{item.name}"/><br></br>
-                       <h:outputText value="#{item.description}"/><br></br>
-                       <h:outputText value="#{item.mediapath}"/><br></br>
-                       <h:outputText value="#{item.unitprice}"/><br></br>
+                    <p><span padding="10"><h:outputText value="#{item.name}"/></span>
+                       <span padding="10"><h:outputText value="#{item.description}"/></span>
+                       <span padding="10"><h:outputText value="#{item.mediapath}"/></span>
+                       <span padding="10"><h:outputText value="#{item.unitprice}"/><br></br></span>
                        <h:commandButton
                             type="submit"
                             value="Remove"
@@ -49,6 +47,17 @@ redirect=true" ></h:commandButton>
                     </p>
                 </ui:repeat>
             </h:form> 
+        </div>
+        <div id="purchase">
+            <h3>Purchase</h3>
+            <h:form id="purchase">
+                <h:commandButton
+                            type="submit"
+                            value="Purchase"
+                            styleClass="btn btn-sm btn-default"
+                            action="#{basketBean.purchase}">
+                </h:commandButton>
+            </h:form>
         </div>   
     </ui:define>
 </ui:composition>

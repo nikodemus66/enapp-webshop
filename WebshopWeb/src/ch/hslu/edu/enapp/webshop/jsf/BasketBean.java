@@ -8,7 +8,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
 import ch.hslu.edu.enapp.webshop.common.exception.PurchaseException;
 
@@ -22,9 +21,6 @@ public class BasketBean implements Serializable{
 
     @Inject
     ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal purchaseManager;
-    
-//    @Inject
-//    ch.hslu.edu.enapp.webshop.jsf.AccountMBean account;
     
     @Inject
     ch.hslu.edu.enapp.webshop.jsf.UserSession userSession;
@@ -51,26 +47,18 @@ public class BasketBean implements Serializable{
         basket.clear();
     }
     
+    public int getProductCount() {
+        return basket.size();
+    }
+    
     public void purchase() {
         
-//        if (account.isLoggedIn())
-//        {
-//            // TODO the whole purchase process has to be here
-//        }
-//        else {
-//            //TODO Redirect to Login page
-//        }
-        
-        // Test
-//        CustomerDTO customer = new CustomerDTO();
-//        customer.setId(1);
-//        customer.setName("Test");
+//        TODO userSession.getUsername()
         
         try {
-            purchaseManager.purchase(userSession.getUsername(), basket);
+            purchaseManager.purchase("TestCustomer", basket);
             clearBasket();
         } catch (PurchaseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
