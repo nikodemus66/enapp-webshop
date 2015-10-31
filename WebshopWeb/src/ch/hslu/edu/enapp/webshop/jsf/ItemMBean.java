@@ -26,6 +26,7 @@ public class ItemMBean implements Serializable {
     }
     
     private static final long serialVersionUID = 1L;
+    
     public List<ProductDTO> getItems() {
         if (productList.isEmpty())
             productList = items.getItems();

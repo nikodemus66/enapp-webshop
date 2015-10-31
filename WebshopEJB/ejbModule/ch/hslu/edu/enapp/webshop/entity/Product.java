@@ -1,7 +1,9 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -11,7 +13,8 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Product.findAll", query="SELECT p FROM Product p")
+@NamedQueries(value = { @NamedQuery(name="Product.findAll", query="SELECT p FROM Product p"),
+                        @NamedQuery(name="Product.findById", query="SELECT p FROM Product p WHERE p.productid = :productid")})
 public class Product implements Serializable {
 	private static final long serialVersionUID = 1L;
 

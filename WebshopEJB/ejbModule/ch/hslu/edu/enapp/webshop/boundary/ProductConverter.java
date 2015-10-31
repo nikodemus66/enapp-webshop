@@ -16,17 +16,4 @@ public class ProductConverter {
         
         return productDTOReturn;
     }
-    
-    public static Product createEntityFromDTO(final ProductDTO product) {
-        final Product productReturn = new Product();
-        
-        productReturn.setProductid(product.getId());
-        productReturn.setName(product.getName());
-        productReturn.setDescription(product.getDescription());
-        productReturn.setMediapath(product.getMediapath());
-        productReturn.setUnitprice(product.getUnitprice());
-        
-        return productReturn;
-    }
-
 }

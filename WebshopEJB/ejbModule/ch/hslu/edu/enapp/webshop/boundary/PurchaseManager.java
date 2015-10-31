@@ -1,5 +1,6 @@
 package ch.hslu.edu.enapp.webshop.boundary;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,13 +11,15 @@ import javax.persistence.PersistenceContext;
 
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerRemote;
-import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
 import ch.hslu.edu.enapp.webshop.entity.Customer;
 import ch.hslu.edu.enapp.webshop.entity.Product;
 import ch.hslu.edu.enapp.webshop.entity.Purchase;
 import ch.hslu.edu.enapp.webshop.entity.Purchaseitem;
 import ch.hslu.edu.enapp.webshop.common.exception.PurchaseException;
+
+import java.sql.Timestamp;
+
 /**
  * Session Bean implementation class PurchaseManager
  */
@@ -41,26 +44,41 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
            try {                        
                 
                 Purchase purchase = new Purchase();
+                List<Purchaseitem> purchaseItems = new ArrayList<Purchaseitem>();
                 
                 Customer customer = (Customer) entityManager.createNamedQuery(
                         "Customer.findByName", Customer.class).setParameter("username", customerName).getSingleResult();
                 
+//              Set purchase fields
                 purchase.setCustomerBean(customer);
-               
-                entityManager.persist(purchase);
+                purchase.setDatetime(new Timestamp(System.currentTimeMillis()));
+                purchase.setState("FINISHED");
                 
+//              set purchase items
                 while(productIterator.hasNext()) {
                     ProductDTO productDto = (ProductDTO)productIterator.next();
                     
                     Purchaseitem purchaseItem = new Purchaseitem();
                     entityManager.persist(purchaseItem);
                     
-                    purchaseItem.setProductBean(ProductConverter.createEntityFromDTO(productDto));
-                    purchaseItem.setPurchaseBean(purchase);
+                    Product product = (Product) entityManager.createNamedQuery(
+                            "Product.findById", Product.class).setParameter("productid", productDto.getId()).getSingleResult();
                     
-                    purchase.addPurchaseitem(purchaseItem);
+                    entityManager.persist(product);
+                    
+//                  Set purchase item fields
+                    purchaseItem.setProductBean(product);
+                    purchaseItem.setPurchaseBean(purchase);
+                    purchaseItem.setQuantity(1);
+                    purchaseItem.setUnitprice(product.getUnitprice());
+                    purchaseItem.setDescription(product.getDescription());
+                    
+                    purchaseItems.add(purchaseItem);
                 }
                 
+                purchase.setPurchaseitems(purchaseItems);
+                
+                entityManager.persist(purchase);
                 
         } catch(final Exception e) {
             throw new PurchaseException();

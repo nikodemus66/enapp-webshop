@@ -1,7 +1,9 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class Purchase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int purchaseid;
 
 	private Timestamp datetime;
