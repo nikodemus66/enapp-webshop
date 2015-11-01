@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,9 +24,6 @@ public class BasketBean implements Serializable{
     @EJB
     ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal purchaseManager;
     
-//    @Inject
-//    ch.hslu.edu.enapp.webshop.jsf.UserSession userSession;
-    
     private List<ProductDTO> basket;
     
     public BasketBean() {
@@ -33,8 +31,8 @@ public class BasketBean implements Serializable{
     }
     
     public void doPurchase() { 
-        try {
-            purchaseManager.purchase("test2", basket);
+        try {           
+            purchaseManager.purchase(getUsername(), basket);
             clearBasket();
         } catch (PurchaseException e) {
             e.printStackTrace();
@@ -59,5 +57,9 @@ public class BasketBean implements Serializable{
     
     public int getProductCount() {
         return basket.size();
+    }
+    
+    private String getUsername() {
+        return FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
     }
 }
