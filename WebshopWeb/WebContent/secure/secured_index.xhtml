@@ -7,9 +7,9 @@
     template="secured_template.xhtml">
 
     <ui:define name="content">
-        <div id="login">
+        <div id="logout">
             <h:form>
-                <h:commandLink action="/secure/secured_index?faces-redirect=true" value="Login"></h:commandLink>
+                <h:commandLink actionListener="#{userSession.logout}" value="Logout"></h:commandLink>
             </h:form>
         </div>
         <div id="products">
@@ -55,7 +55,7 @@
                             type="submit"
                             value="Purchase"
                             styleClass="btn btn-sm btn-default"
-                            action="#{basketBean.purchase}">
+                            action="#{basketBean.doPurchase}">
                 </h:commandButton>
             </h:form>
         </div>   

@@ -34,7 +34,7 @@ public class BasketBean implements Serializable{
     
     public void doPurchase() { 
         try {
-            purchaseManager.purchase("TestCustomer", basket);
+            purchaseManager.purchase("test2", basket);
             clearBasket();
         } catch (PurchaseException e) {
             e.printStackTrace();

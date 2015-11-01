@@ -1,9 +1,7 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -13,8 +11,7 @@ import java.util.List;
  */
 @Entity
 @NamedQueries(value = { @NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c"),
-@NamedQuery(name="Customer.findByName", query="SELECT c FROM Customer c WHERE c.username= :username") })
-
+                        @NamedQuery(name="Customer.findByName", query="SELECT c FROM Customer c WHERE c.username= :username") })
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,6 +34,19 @@ public class Customer implements Serializable {
 	//bi-directional many-to-one association to Purchase
 	@OneToMany(mappedBy="customerBean")
 	private List<Purchase> purchases;
+
+	//bi-directional many-to-many association to Authgroup
+	@ManyToMany
+	@JoinTable(
+		name="USERGROUP"
+		, joinColumns={
+			@JoinColumn(name="IDUSER")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="IDGROUP")
+			}
+		)
+	private List<Authgroup> authgroups;
 
 	public Customer() {
 	}
@@ -109,6 +119,14 @@ public class Customer implements Serializable {
 		purchas.setCustomerBean(null);
 
 		return purchas;
+	}
+
+	public List<Authgroup> getAuthgroups() {
+		return this.authgroups;
+	}
+
+	public void setAuthgroups(List<Authgroup> authgroups) {
+		this.authgroups = authgroups;
 	}
 
 }

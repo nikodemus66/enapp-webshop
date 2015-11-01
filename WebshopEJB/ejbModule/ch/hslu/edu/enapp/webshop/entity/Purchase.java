@@ -1,9 +1,7 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.sql.Timestamp;
 import java.util.List;
 

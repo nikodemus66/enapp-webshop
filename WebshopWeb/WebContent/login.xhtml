@@ -1,21 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:c="http://java.sun.com/jsp/jstl/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     
-    <h1>
-        <h:outputFormat value="Webshop Login" />
-    </h1>
-    <form id="login_form" method="post" action="j_security_check">
-        <h:panelGrid id="webshopGrid" columns="2" bgcolor="#eff5fa" cellspacing="5" frame="box">
-            <h:outputLabel value="User ID:" for="j_username" />
-            <h:inputText id="j_username" size="35" tabindex="1" />
-            <h:outputLabel value="Password:" for="j_password" />
-            <h:inputSecret id="j_password" size="35" tabindex="2" />
-            <h:outputLabel value="" for="login" />
-            <h:commandButton id="login" type="submit" value="Login" />
-        </h:panelGrid>
-    </form>
-</ui:composition>
+    <body>
+        <h1>
+            <h:outputFormat value="Webshop Login" />
+        </h1>
+        <form id="login_form" method="post" action="j_security_check">
+            <h:panelGrid id="webshopGrid" columns="2" bgcolor="#eff5fa" cellspacing="5" frame="box">
+                <h:outputLabel value="User ID:" for="j_username" />
+                <h:inputText id="j_username" size="35" tabindex="1" />
+                <h:outputLabel value="Password:" for="j_password" />
+                <h:inputSecret id="j_password" size="35" tabindex="2" />
+                <h:outputLabel value="" for="login" />
+                <h:commandButton id="login" type="submit" value="Login" />
+            </h:panelGrid>
+        </form>
+    </body>
+</html>

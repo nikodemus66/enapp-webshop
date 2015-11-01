@@ -19,9 +19,9 @@ public class Authgroup implements Serializable {
 
 	private String groupname;
 
-	//bi-directional many-to-one association to Usergroup
-	@OneToMany(mappedBy="authgroup")
-	private List<Usergroup> usergroups;
+	//bi-directional many-to-many association to Customer
+	@ManyToMany(mappedBy="authgroups")
+	private List<Customer> customers;
 
 	public Authgroup() {
 	}
@@ -42,26 +42,12 @@ public class Authgroup implements Serializable {
 		this.groupname = groupname;
 	}
 
-	public List<Usergroup> getUsergroups() {
-		return this.usergroups;
+	public List<Customer> getCustomers() {
+		return this.customers;
 	}
 
-	public void setUsergroups(List<Usergroup> usergroups) {
-		this.usergroups = usergroups;
-	}
-
-	public Usergroup addUsergroup(Usergroup usergroup) {
-		getUsergroups().add(usergroup);
-		usergroup.setAuthgroup(this);
-
-		return usergroup;
-	}
-
-	public Usergroup removeUsergroup(Usergroup usergroup) {
-		getUsergroups().remove(usergroup);
-		usergroup.setAuthgroup(null);
-
-		return usergroup;
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
 	}
 
 }

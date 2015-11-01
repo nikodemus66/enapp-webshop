@@ -7,7 +7,5 @@
 		<class>ch.hslu.edu.enapp.webshop.entity.Product</class>
 		<class>ch.hslu.edu.enapp.webshop.entity.Purchase</class>
 		<class>ch.hslu.edu.enapp.webshop.entity.Purchaseitem</class>
-		<class>ch.hslu.edu.enapp.webshop.entity.Usergroup</class>
-		<class>ch.hslu.edu.enapp.webshop.entity.UsergroupPK</class>
 	</persistence-unit>
 </persistence>
