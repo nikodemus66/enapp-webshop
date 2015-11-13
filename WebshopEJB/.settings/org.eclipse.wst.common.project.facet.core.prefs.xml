@@ -4,4 +4,12 @@
       <attribute name="provider-id" value="runtime-library-provider"/>
     </node>
   </facet>
+  <facet id="jpt.jaxb">
+    <node name="libprov">
+      <attribute name="provider-id" value="jaxb-jre-library-provider"/>
+    </node>
+    <node name="platform">
+      <attribute name="platform-id" value="generic_2_1"/>
+    </node>
+  </facet>
 </root>

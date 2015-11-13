@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:microsoft-dynamics-schemas/page/item" elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/page/item" version="1.0">
+
+  <xs:element name="Create" type="tns:Create"/>
+
+  <xs:element name="CreateMultiple" type="tns:CreateMultiple"/>
+
+  <xs:element name="CreateMultiple_Result" type="tns:CreateMultiple_Result"/>
+
+  <xs:element name="Create_Result" type="tns:Create_Result"/>
+
+  <xs:element name="Delete" type="tns:Delete"/>
+
+  <xs:element name="Delete_Result" type="tns:Delete_Result"/>
+
+  <xs:element name="IsUpdated" type="tns:IsUpdated"/>
+
+  <xs:element name="IsUpdated_Result" type="tns:IsUpdated_Result"/>
+
+  <xs:element name="Read" type="tns:Read"/>
+
+  <xs:element name="ReadMultiple" type="tns:ReadMultiple"/>
+
+  <xs:element name="ReadMultiple_Result" type="tns:ReadMultiple_Result"/>
+
+  <xs:element name="Read_Result" type="tns:Read_Result"/>
+
+  <xs:element name="Update" type="tns:Update"/>
+
+  <xs:element name="UpdateMultiple" type="tns:UpdateMultiple"/>
+
+  <xs:element name="UpdateMultiple_Result" type="tns:UpdateMultiple_Result"/>
+
+  <xs:element name="Update_Result" type="tns:Update_Result"/>
+
+  <xs:complexType name="Create_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" type="tns:Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" type="xs:string"/>
+      <xs:element minOccurs="0" name="No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Description" type="xs:string"/>
+      <xs:element minOccurs="0" name="Owner" type="xs:string"/>
+      <xs:element minOccurs="0" name="Kind" type="xs:string"/>
+      <xs:element minOccurs="0" name="Mediafile_Name" type="xs:string"/>
+      <xs:element minOccurs="0" name="Manufacturer_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Base_Unit_of_Measure" type="xs:string"/>
+      <xs:element minOccurs="0" name="Bill_of_Materials" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Shelf_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Automatic_Ext_Texts" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Created_From_Nonstock_Item" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Item_Category_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Product_Group_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Last_Date_Modified" type="xs:date"/>
+      <xs:element minOccurs="0" name="Search_Description" type="xs:string"/>
+      <xs:element minOccurs="0" name="Inventory" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Qty_on_Purch_Order" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Qty_on_Prod_Order" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Qty_on_Component_Lines" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Qty_on_Sales_Order" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Qty_on_Service_Order" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Service_Item_Group" type="xs:string"/>
+      <xs:element minOccurs="0" name="Blocked" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="No_Stockkeeping" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Costing_Method" type="tns:Costing_Method"/>
+      <xs:element minOccurs="0" name="Cost_is_Adjusted" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Cost_is_Posted_to_G_L" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Standard_Cost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Unit_Cost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Overhead_Rate" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Indirect_Cost_Percent" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Last_Direct_Cost" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Price_Profit_Calculation" type="tns:Price_Profit_Calculation"/>
+      <xs:element minOccurs="0" name="Profit_Percent" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Unit_Price" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Gen_Prod_Posting_Group" type="xs:string"/>
+      <xs:element minOccurs="0" name="VAT_Prod_Posting_Group" type="xs:string"/>
+      <xs:element minOccurs="0" name="Inventory_Posting_Group" type="xs:string"/>
+      <xs:element minOccurs="0" name="Net_Invoiced_Qty" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Allow_Invoice_Disc" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Item_Disc_Group" type="xs:string"/>
+      <xs:element minOccurs="0" name="Sales_Unit_of_Measure" type="xs:string"/>
+      <xs:element minOccurs="0" name="Sale_blocked" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Replenishment_System" type="tns:Replenishment_System"/>
+      <xs:element minOccurs="0" name="Vendor_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Vendor_Item_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Purch_Unit_of_Measure" type="xs:string"/>
+      <xs:element minOccurs="0" name="Lead_Time_Calculation" type="xs:string"/>
+      <xs:element minOccurs="0" name="Manufacturing_Policy" type="tns:Manufacturing_Policy"/>
+      <xs:element minOccurs="0" name="Routing_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Production_BOM_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Rounding_Precision" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Flushing_Method" type="tns:Flushing_Method"/>
+      <xs:element minOccurs="0" name="Scrap_Percent" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Lot_Size" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Purchase_blocked" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Reordering_Policy" type="tns:Reordering_Policy"/>
+      <xs:element minOccurs="0" name="Include_Inventory" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Reserve" type="tns:Reserve"/>
+      <xs:element minOccurs="0" name="Order_Tracking_Policy" type="tns:Order_Tracking_Policy"/>
+      <xs:element minOccurs="0" name="Stockkeeping_Unit_Exists" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Critical" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="Reorder_Cycle" type="xs:string"/>
+      <xs:element minOccurs="0" name="Safety_Lead_Time" type="xs:string"/>
+      <xs:element minOccurs="0" name="Safety_Stock_Quantity" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Reorder_Point" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Reorder_Quantity" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Maximum_Inventory" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Minimum_Order_Quantity" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Maximum_Order_Quantity" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Order_Multiple" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Tariff_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Country_Region_of_Origin_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Net_Weight" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Gross_Weight" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="Item_Tracking_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Serial_Nos" type="xs:string"/>
+      <xs:element minOccurs="0" name="Lot_Nos" type="xs:string"/>
+      <xs:element minOccurs="0" name="Expiration_Calculation" type="xs:string"/>
+      <xs:element minOccurs="0" name="Common_Item_No" type="xs:string"/>
+      <xs:element minOccurs="0" name="Special_Equipment_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Put_away_Template_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Put_away_Unit_of_Measure_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Phys_Invt_Counting_Period_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Last_Phys_Invt_Date" type="xs:date"/>
+      <xs:element minOccurs="0" name="Last_Counting_Period_Update" type="xs:date"/>
+      <xs:element minOccurs="0" name="Next_Counting_Period" type="xs:string"/>
+      <xs:element minOccurs="0" name="Identifier_Code" type="xs:string"/>
+      <xs:element minOccurs="0" name="Use_Cross_Docking" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UpdateMultiple_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item_List" type="tns:Item_List"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Item_List">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Item" type="tns:Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Read_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" type="tns:Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ReadMultiple">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="filter" type="tns:Item_Filter"/>
+      <xs:element minOccurs="0" name="bookmarkKey" type="xs:string"/>
+      <xs:element name="setSize" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Item_Filter">
+    <xs:sequence>
+      <xs:element name="Field" type="tns:Item_Fields"/>
+      <xs:element name="Criteria" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Update">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" type="tns:Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Delete">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IsUpdated_Result">
+    <xs:sequence>
+      <xs:element name="IsUpdated_Result" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CreateMultiple">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item_List" type="tns:Item_List"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CreateMultiple_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item_List" type="tns:Item_List"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Delete_Result">
+    <xs:sequence>
+      <xs:element name="Delete_Result" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IsUpdated">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Update_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" type="tns:Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Read">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="No" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ReadMultiple_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReadMultiple_Result" type="tns:Item_List"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UpdateMultiple">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item_List" type="tns:Item_List"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Create">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Item" type="tns:Item"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="Costing_Method">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FIFO"/>
+      <xs:enumeration value="LIFO"/>
+      <xs:enumeration value="Specific"/>
+      <xs:enumeration value="Average"/>
+      <xs:enumeration value="Standard"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Price_Profit_Calculation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Profit_x003D_Price_Cost"/>
+      <xs:enumeration value="Price_x003D_Cost_x002B_Profit"/>
+      <xs:enumeration value="No_Relationship"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Replenishment_System">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Purchase"/>
+      <xs:enumeration value="Prod_Order"/>
+      <xs:enumeration value="_blank_"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Manufacturing_Policy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Make_to_Stock"/>
+      <xs:enumeration value="Make_to_Order"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Flushing_Method">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Manual"/>
+      <xs:enumeration value="Forward"/>
+      <xs:enumeration value="Backward"/>
+      <xs:enumeration value="Pick__x002B__Forward"/>
+      <xs:enumeration value="Pick__x002B__Backward"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Reordering_Policy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="_blank_"/>
+      <xs:enumeration value="Fixed_Reorder_Qty"/>
+      <xs:enumeration value="Maximum_Qty"/>
+      <xs:enumeration value="Order"/>
+      <xs:enumeration value="Lot_for_Lot"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Reserve">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Never"/>
+      <xs:enumeration value="Optional"/>
+      <xs:enumeration value="Always"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Order_Tracking_Policy">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="Tracking_Only"/>
+      <xs:enumeration value="Tracking__x0026__Action_Msg"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Item_Fields">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="No"/>
+      <xs:enumeration value="Description"/>
+      <xs:enumeration value="Owner"/>
+      <xs:enumeration value="Kind"/>
+      <xs:enumeration value="Mediafile_Name"/>
+      <xs:enumeration value="Manufacturer_Code"/>
+      <xs:enumeration value="Base_Unit_of_Measure"/>
+      <xs:enumeration value="Bill_of_Materials"/>
+      <xs:enumeration value="Shelf_No"/>
+      <xs:enumeration value="Automatic_Ext_Texts"/>
+      <xs:enumeration value="Created_From_Nonstock_Item"/>
+      <xs:enumeration value="Item_Category_Code"/>
+      <xs:enumeration value="Product_Group_Code"/>
+      <xs:enumeration value="Last_Date_Modified"/>
+      <xs:enumeration value="Search_Description"/>
+      <xs:enumeration value="Inventory"/>
+      <xs:enumeration value="Qty_on_Purch_Order"/>
+      <xs:enumeration value="Qty_on_Prod_Order"/>
+      <xs:enumeration value="Qty_on_Component_Lines"/>
+      <xs:enumeration value="Qty_on_Sales_Order"/>
+      <xs:enumeration value="Qty_on_Service_Order"/>
+      <xs:enumeration value="Service_Item_Group"/>
+      <xs:enumeration value="Blocked"/>
+      <xs:enumeration value="No_Stockkeeping"/>
+      <xs:enumeration value="Costing_Method"/>
+      <xs:enumeration value="Cost_is_Adjusted"/>
+      <xs:enumeration value="Cost_is_Posted_to_G_L"/>
+      <xs:enumeration value="Standard_Cost"/>
+      <xs:enumeration value="Unit_Cost"/>
+      <xs:enumeration value="Overhead_Rate"/>
+      <xs:enumeration value="Indirect_Cost_Percent"/>
+      <xs:enumeration value="Last_Direct_Cost"/>
+      <xs:enumeration value="Price_Profit_Calculation"/>
+      <xs:enumeration value="Profit_Percent"/>
+      <xs:enumeration value="Unit_Price"/>
+      <xs:enumeration value="Gen_Prod_Posting_Group"/>
+      <xs:enumeration value="VAT_Prod_Posting_Group"/>
+      <xs:enumeration value="Inventory_Posting_Group"/>
+      <xs:enumeration value="Net_Invoiced_Qty"/>
+      <xs:enumeration value="Allow_Invoice_Disc"/>
+      <xs:enumeration value="Item_Disc_Group"/>
+      <xs:enumeration value="Sales_Unit_of_Measure"/>
+      <xs:enumeration value="Sale_blocked"/>
+      <xs:enumeration value="Replenishment_System"/>
+      <xs:enumeration value="Vendor_No"/>
+      <xs:enumeration value="Vendor_Item_No"/>
+      <xs:enumeration value="Purch_Unit_of_Measure"/>
+      <xs:enumeration value="Lead_Time_Calculation"/>
+      <xs:enumeration value="Manufacturing_Policy"/>
+      <xs:enumeration value="Routing_No"/>
+      <xs:enumeration value="Production_BOM_No"/>
+      <xs:enumeration value="Rounding_Precision"/>
+      <xs:enumeration value="Flushing_Method"/>
+      <xs:enumeration value="Scrap_Percent"/>
+      <xs:enumeration value="Lot_Size"/>
+      <xs:enumeration value="Purchase_blocked"/>
+      <xs:enumeration value="Reordering_Policy"/>
+      <xs:enumeration value="Include_Inventory"/>
+      <xs:enumeration value="Reserve"/>
+      <xs:enumeration value="Order_Tracking_Policy"/>
+      <xs:enumeration value="Stockkeeping_Unit_Exists"/>
+      <xs:enumeration value="Critical"/>
+      <xs:enumeration value="Reorder_Cycle"/>
+      <xs:enumeration value="Safety_Lead_Time"/>
+      <xs:enumeration value="Safety_Stock_Quantity"/>
+      <xs:enumeration value="Reorder_Point"/>
+      <xs:enumeration value="Reorder_Quantity"/>
+      <xs:enumeration value="Maximum_Inventory"/>
+      <xs:enumeration value="Minimum_Order_Quantity"/>
+      <xs:enumeration value="Maximum_Order_Quantity"/>
+      <xs:enumeration value="Order_Multiple"/>
+      <xs:enumeration value="Tariff_No"/>
+      <xs:enumeration value="Country_Region_of_Origin_Code"/>
+      <xs:enumeration value="Net_Weight"/>
+      <xs:enumeration value="Gross_Weight"/>
+      <xs:enumeration value="Item_Tracking_Code"/>
+      <xs:enumeration value="Serial_Nos"/>
+      <xs:enumeration value="Lot_Nos"/>
+      <xs:enumeration value="Expiration_Calculation"/>
+      <xs:enumeration value="Common_Item_No"/>
+      <xs:enumeration value="Special_Equipment_Code"/>
+      <xs:enumeration value="Put_away_Template_Code"/>
+      <xs:enumeration value="Put_away_Unit_of_Measure_Code"/>
+      <xs:enumeration value="Phys_Invt_Counting_Period_Code"/>
+      <xs:enumeration value="Last_Phys_Invt_Date"/>
+      <xs:enumeration value="Last_Counting_Period_Update"/>
+      <xs:enumeration value="Next_Counting_Period"/>
+      <xs:enumeration value="Identifier_Code"/>
+      <xs:enumeration value="Use_Cross_Docking"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

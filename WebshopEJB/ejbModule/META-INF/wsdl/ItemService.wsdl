@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:microsoft-dynamics-schemas/page/item" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Item_Service" targetNamespace="urn:microsoft-dynamics-schemas/page/item">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="urn:microsoft-dynamics-schemas/page/item" schemaLocation="ItemService_schema1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="Update">
+    <part element="tns:Update" name="parameters">
+    </part>
+  </message>
+  <message name="UpdateMultipleResponse">
+    <part element="tns:UpdateMultiple_Result" name="parameters">
+    </part>
+  </message>
+  <message name="ReadMultiple">
+    <part element="tns:ReadMultiple" name="parameters">
+    </part>
+  </message>
+  <message name="CreateMultipleResponse">
+    <part element="tns:CreateMultiple_Result" name="parameters">
+    </part>
+  </message>
+  <message name="UpdateMultiple">
+    <part element="tns:UpdateMultiple" name="parameters">
+    </part>
+  </message>
+  <message name="CreateResponse">
+    <part element="tns:Create_Result" name="parameters">
+    </part>
+  </message>
+  <message name="UpdateResponse">
+    <part element="tns:Update_Result" name="parameters">
+    </part>
+  </message>
+  <message name="ReadMultipleResponse">
+    <part element="tns:ReadMultiple_Result" name="parameters">
+    </part>
+  </message>
+  <message name="IsUpdated">
+    <part element="tns:IsUpdated" name="parameters">
+    </part>
+  </message>
+  <message name="Read">
+    <part element="tns:Read" name="parameters">
+    </part>
+  </message>
+  <message name="Create">
+    <part element="tns:Create" name="parameters">
+    </part>
+  </message>
+  <message name="Delete">
+    <part element="tns:Delete" name="parameters">
+    </part>
+  </message>
+  <message name="CreateMultiple">
+    <part element="tns:CreateMultiple" name="parameters">
+    </part>
+  </message>
+  <message name="ReadResponse">
+    <part element="tns:Read_Result" name="parameters">
+    </part>
+  </message>
+  <message name="DeleteResponse">
+    <part element="tns:Delete_Result" name="parameters">
+    </part>
+  </message>
+  <message name="IsUpdatedResponse">
+    <part element="tns:IsUpdated_Result" name="parameters">
+    </part>
+  </message>
+  <portType name="Item_Port">
+    <operation name="Read">
+      <input message="tns:Read" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Read">
+    </input>
+      <output message="tns:ReadResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:ReadResponse">
+    </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <input message="tns:ReadMultiple" wsam:Action="urn:microsoft-dynamics-schemas/page/item:ReadMultiple">
+    </input>
+      <output message="tns:ReadMultipleResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:ReadMultipleResponse">
+    </output>
+    </operation>
+    <operation name="IsUpdated">
+      <input message="tns:IsUpdated" wsam:Action="urn:microsoft-dynamics-schemas/page/item:IsUpdated">
+    </input>
+      <output message="tns:IsUpdatedResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:IsUpdatedResponse">
+    </output>
+    </operation>
+    <operation name="Create">
+      <input message="tns:Create" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Create">
+    </input>
+      <output message="tns:CreateResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:CreateResponse">
+    </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <input message="tns:CreateMultiple" wsam:Action="urn:microsoft-dynamics-schemas/page/item:CreateMultiple">
+    </input>
+      <output message="tns:CreateMultipleResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:CreateMultipleResponse">
+    </output>
+    </operation>
+    <operation name="Update">
+      <input message="tns:Update" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Update">
+    </input>
+      <output message="tns:UpdateResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:UpdateResponse">
+    </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <input message="tns:UpdateMultiple" wsam:Action="urn:microsoft-dynamics-schemas/page/item:UpdateMultiple">
+    </input>
+      <output message="tns:UpdateMultipleResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:UpdateMultipleResponse">
+    </output>
+    </operation>
+    <operation name="Delete">
+      <input message="tns:Delete" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Delete">
+    </input>
+      <output message="tns:DeleteResponse" wsam:Action="urn:microsoft-dynamics-schemas/page/item:Item_Port:DeleteResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="Item_PortBinding" type="tns:Item_Port">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="Read">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:Read"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ReadMultiple">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:ReadMultiple"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="IsUpdated">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:IsUpdated"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Create">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:Create"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateMultiple">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:CreateMultiple"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Update">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:Update"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateMultiple">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:UpdateMultiple"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="Delete">
+      <soap:operation soapAction="urn:microsoft-dynamics-schemas/page/item:Delete"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Item_Service">
+    <port binding="tns:Item_PortBinding" name="Item_Port">
+      <soap:address location="http://enapp-daemons.el.eee.intern:9080/EnappDaemonWeb/Item_Service"/>
+    </port>
+  </service>
+</definitions>
