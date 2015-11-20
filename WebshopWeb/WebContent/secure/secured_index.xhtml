@@ -7,8 +7,17 @@
     template="secured_template.xhtml">
 
     <ui:define name="content">
-        <div id="logout">
+        <div id="account">
+            <h2>Account</h2>
             <h:form>
+                <h:outputLink value="secured_profile.xhtml">
+                    <h:outputText value="Profile" />
+                </h:outputLink>
+                <br></br>
+                <h:outputLink value="secured_purchases.xhtml">
+                    <h:outputText value="Purchases" />
+                </h:outputLink>
+                <br></br>
                 <h:commandLink actionListener="#{userSession.logout}" value="Logout"></h:commandLink>
             </h:form>
         </div>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="Webshop">
         <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/META-INF" source-path="/META-INF"/>
         <dependent-module archiveName="WebshopWeb.war" deploy-path="/" handle="module:/resource/WebshopWeb/WebshopWeb">
             <dependent-object>Module_1446195525836</dependent-object>
             <dependency-type>uses</dependency-type>
@@ -13,10 +14,10 @@
             <dependent-object>Module_1446195525840</dependent-object>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="WebShopCommon.jar" deploy-path="/lib" handle="module:/resource/WebShopCommon/WebShopCommon">
+        <dependent-module archiveName="WebshopCommon.jar" deploy-path="/lib" handle="module:/resource/WebshopCommon/WebshopCommon">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="WebshopCommon.jar" deploy-path="/lib" handle="module:/resource/WebshopCommon/WebshopCommon">
+        <dependent-module archiveName="com.ibm.ws.prereq.jaxrs.jar" deploy-path="/lib" handle="module:/classpath/lib//opt/IBM/WebSphere/AppServer/plugins/com.ibm.ws.prereq.jaxrs.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

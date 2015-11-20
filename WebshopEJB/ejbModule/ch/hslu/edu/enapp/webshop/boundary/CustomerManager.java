@@ -55,8 +55,8 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
      */
     @Override
     public void addUser(final CustomerDTO user) {
-        /*final Customer newUser = userConverter.createEntityFromDTO(user);
-        entityManager.persist(newUser);*/
+        final Customer newUser = CustomerConverter.createEntityFromDTO(user);
+        entityManager.persist(newUser);
     }
 
     @Override
@@ -65,6 +65,33 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
                 .createNamedQuery("getStudentByUsername", Customer.class)
                 .setParameter("username", user.getUsername()).getSingleResult();
         entityManager.remove(deleteUser);*/
+    }
+
+    @Override
+    public void updateUser(final CustomerDTO user) {
+        
+        final Customer customer = (Customer)entityManager.createNamedQuery(
+                "Customer.findByName", Customer.class).setParameter("username", user.getUsername());
+        
+        if (customer != null) {
+            customer.setUsername(user.getUsername());
+            customer.setPassword(user.getPassword());
+            
+            customer.setName(user.getName());
+            customer.setAddress(user.getAddress());
+            customer.setEmail(user.getEmail());
+            
+//            entityManager.persist(customer);
+        }
+    }
+
+    @Override
+    public CustomerDTO getUser(String username) {
+        final Customer customer = entityManager.createNamedQuery(
+                "Customer.findByName", Customer.class).setParameter("username", username).getSingleResult();
+        
+        return CustomerConverter.createDTOFromEntity(customer);
+        
     }
 
 }

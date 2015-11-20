@@ -13,5 +13,9 @@ public interface CustomerServiceLocal {
     void addUser(CustomerDTO user);
     
     void deleteUser(CustomerDTO user);
+    
+    void updateUser(CustomerDTO user);
+    
+    CustomerDTO getUser(String username);
 
 }

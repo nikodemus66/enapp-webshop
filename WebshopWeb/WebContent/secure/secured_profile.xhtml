@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="secured_template.xhtml">
+
+	<ui:define name="content">
+	    <h:form method="post" action="account">
+            <h:outputLabel value="Account:" for="username"/><h:outputText id="username" value="#{accountMBean.username}" />
+            <br></br>
+            <h:outputLabel value="Name:" for="name"/><h:inputText id="name" value="#{accountMBean.name}" tabindex="1" />
+            <br></br>
+            <h:outputLabel value="Address:" for="address"/><h:inputText id="address" value="#{accountMBean.address}" tabindex="2"/>
+            <br></br>
+            <h:outputLabel value="EMail:" for="email"/><h:inputText id="email" value="#{accountMBean.email}" tabindex="3"/>
+            <br></br>
+            <h:outputLabel value="Password:" for="password"/><h:inputSecret id="password" value="#{accountMBean.password}" tabindex="4"/>
+            <br></br>
+            <h:outputLabel value="" for="save"/><h:commandButton id="save" value="Save" action="#{userSession.updateCustomer}"/>
+        </h:form>
+	</ui:define>
+</ui:composition>

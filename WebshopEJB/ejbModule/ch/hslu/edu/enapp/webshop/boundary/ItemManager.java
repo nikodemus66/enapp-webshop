@@ -14,6 +14,7 @@ import ch.hslu.edu.enapp.webshop.webservices.enappdaemon.Item;
 import ch.hslu.edu.enapp.webshop.webservices.enappdaemon.ItemFields;
 import ch.hslu.edu.enapp.webshop.webservices.enappdaemon.ItemFilter;
 import ch.hslu.edu.enapp.webshop.webservices.enappdaemon.ItemList;
+import ch.hslu.edu.enapp.webshop.webservices.enappdaemon.ItemPort;
 import ch.hslu.edu.enapp.webshop.webservices.enappdaemon.ItemService;
 
 /**
@@ -38,19 +39,21 @@ public class ItemManager implements ItemManagerLocal {
     public List<ProductDTO> getItems() {       
         List<ProductDTO> productDtos = new ArrayList<ProductDTO>();
        
-        ItemFilter itemFilter = new ItemFilter();
-        
-        itemFilter.setField(ItemFields.PRODUCT_GROUP_CODE);
-        itemFilter.setCriteria("MP3");
-        
-        List<ItemFilter> itemFilterList = new ArrayList<ItemFilter>();
-        itemFilterList.add(itemFilter);
-        
-        ItemList itemList = itemService.getItemPort().readMultiple(itemFilterList, null, 0);
-        
-        for(Item item: itemList.getItem()) {
-            productDtos.add(ProductConverter.createDTOFromWebservice(item));
-        }
+//        ItemFilter itemFilter = new ItemFilter();
+//        
+//        itemFilter.setField(ItemFields.PRODUCT_GROUP_CODE);
+//        itemFilter.setCriteria("MP3");
+//        
+//        List<ItemFilter> itemFilterList = new ArrayList<ItemFilter>();
+//        itemFilterList.add(itemFilter);
+//        
+//        ItemPort itemPort = itemService.getItemPort();
+//        
+//        ItemList itemList = itemPort.readMultiple(itemFilterList, null, 0);
+//        
+//        for(Item item: itemList.getItem()) {
+//            productDtos.add(ProductConverter.createDTOFromWebservice(item));
+//        }
         
         return productDtos;
     }   

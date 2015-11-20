@@ -6,7 +6,6 @@
 		<project>WebshopWeb</project>
 		<project>WebshopEJB</project>
 		<project>WebshopClient</project>
-		<project>WebShopCommon</project>
 		<project>WebshopCommon</project>
 	</projects>
 	<buildSpec>

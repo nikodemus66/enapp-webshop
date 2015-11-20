@@ -19,15 +19,15 @@ public class AccountMBean implements Serializable {
     private CustomerDTO customer = new CustomerDTO();;
     private boolean loggedIn = false;
     
-    public void login(String username, String password) {
-        if (this.customerService.checkPasswordForUsername(username, password)) {
-//            customerService.
-            this.loggedIn = true;
-        }
-        else {
-            //TODO error handling
-        }
-    }
+//    public void login(String username, String password) {
+//        if (this.customerService.checkPasswordForUsername(username, password)) {
+//            customer = customerService.getUser(username);
+//            this.loggedIn = true;
+//        }
+//        else {
+//            //TODO error handling
+//        }
+//    }
     
     public void logout() {
         this.loggedIn = false;
@@ -37,7 +37,43 @@ public class AccountMBean implements Serializable {
         return this.customer;
     }
     
+    public void setCustomer(CustomerDTO customer) {
+        this.customer = customer;
+    }
+    
     public boolean isLoggedIn() {
         return this.loggedIn;
+    }
+    
+    public String getUsername() {
+        return customer.getUsername();
+    }
+    
+//    public void setUsername(String username) {
+//        customer.setUsername(username);
+//    }
+    
+//    public void setPassword(String password) {
+//        customer.setPassword(password);
+//    }
+    
+    public String getName() {
+        return customer.getName();
+    }
+    
+    public String getAddress() {
+        return customer.getAddress();
+    }
+    
+    public String getPassword() {
+        return customer.getPassword();
+    }
+       
+    public String getEmail() {
+        return customer.getEmail();
+    }
+    
+    public void setEmail(String email) {
+        customer.setEmail(email);
     }
 }
