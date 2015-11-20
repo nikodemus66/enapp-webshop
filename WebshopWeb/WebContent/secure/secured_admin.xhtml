@@ -8,8 +8,24 @@
 
 	<ui:define name="content">
         <h2>Admin</h2>
-	    <h:form method="post" action="admin">
-
-        </h:form>
+            <h:form id="customers">
+                <ui:repeat value="#{adminBean.customers}" var="item">
+                    <p><span padding="10"><h:inputText value="#{item.username}"/></span>
+                       <span padding="10"><h:inputText value="#{item.name}"/></span>
+                       <span padding="10"><h:inputText value="#{item.address}"/></span>
+                       <span padding="10"><h:inputText value="#{item.email}"/></span>
+                       <h:commandButton
+                            type="submit"
+                            value="Change"
+                            styleClass="btn btn-sm btn-default"
+                            action="#{adminBean.changeCustomer(item)}">
+                        </h:commandButton>
+                    </p>
+                </ui:repeat>
+                <br></br>
+                <h:outputLink value="secured_index.xhtml">
+                    <h:outputText value="Back" />
+                </h:outputLink>
+            </h:form> 
 	</ui:define>
 </ui:composition>

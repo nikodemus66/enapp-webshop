@@ -1,5 +1,7 @@
 package ch.hslu.edu.enapp.webshop.common;
 
+import java.util.List;
+
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 
 public interface CustomerServiceRemote {
@@ -17,4 +19,6 @@ public interface CustomerServiceRemote {
     void updateUser(CustomerDTO user);
     
     CustomerDTO getUser(String username);
+
+    List<CustomerDTO> getUsers();
 }

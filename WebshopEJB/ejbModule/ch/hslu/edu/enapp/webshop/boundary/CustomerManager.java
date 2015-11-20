@@ -1,5 +1,6 @@
 package ch.hslu.edu.enapp.webshop.boundary;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
@@ -100,6 +101,20 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
                 "Customer.findByName", Customer.class).setParameter("username", username).getSingleResult();
         
         return CustomerConverter.createDTOFromEntity(customer);
+    }
+
+    @Override
+    public List<CustomerDTO> getUsers() {
+        final List<Customer> allCustomer = entityManager.createNamedQuery(
+                "Customer.findAll", Customer.class).getResultList();
+        
+        List<CustomerDTO> customers = new ArrayList<CustomerDTO>();
+        
+        for(Customer customer: allCustomer) {
+            customers.add(CustomerConverter.createDTOFromEntity(customer));
+        }
+        
+        return customers;
     }
 
 }
