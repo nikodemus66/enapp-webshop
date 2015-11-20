@@ -72,6 +72,9 @@
     <security-role>
         <role-name>webshopUserRole</role-name>
     </security-role>
+        <security-role>
+        <role-name>webshopAdminRole</role-name>
+    </security-role>
     
     <security-constraint>
         <display-name>secured pages</display-name>
@@ -82,8 +85,22 @@
             <http-method>POST</http-method>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>webshopUserRole</role-name>
             <role-name>webshopAdminRole</role-name>
+        </auth-constraint>
+    </security-constraint>
+        <security-constraint>
+        <display-name>secured pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>secured</web-resource-name>
+            <url-pattern>/secure/secured_index.xhtml</url-pattern>
+            <url-pattern>/secure/secured_template.xhtml</url-pattern>
+            <url-pattern>/secure/secured_profile.xhtml</url-pattern>
+            <url-pattern>/secure/secured_purchaases.xhtml</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>webshopUserRole</role-name>
         </auth-constraint>
     </security-constraint>
     
