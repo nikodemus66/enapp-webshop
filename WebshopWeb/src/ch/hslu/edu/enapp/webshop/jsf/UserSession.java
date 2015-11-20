@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -20,6 +21,7 @@ public class UserSession implements Serializable{
     @Inject
     ch.hslu.edu.enapp.webshop.jsf.AccountMBean account;
     
+//    AccountMBean account = new AccountMBean();
     
     /**
      * 
@@ -45,9 +47,9 @@ public class UserSession implements Serializable{
         + "/ibm_security_logout?logoutExitPage=/index.xhtml");
     }
     
-//    public String getUsername() {
-//        return this.username;
-//    }
+    public String getUsername() {
+        return this.username;
+    }
     
     public void updateCustomer() {
         customerService.updateUser(account.getCustomer());

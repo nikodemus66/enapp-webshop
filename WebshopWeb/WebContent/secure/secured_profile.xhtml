@@ -10,15 +10,17 @@
 	    <h:form method="post" action="account">
             <h:outputLabel value="Account:" for="username"/><h:outputText id="username" value="#{accountMBean.username}" />
             <br></br>
-            <h:outputLabel value="Name:" for="name"/><h:inputText id="name" value="#{accountMBean.name}" tabindex="1" />
+            <h:outputLabel value="Name:" for="name"/><h:inputText id="name" value="#{accountMBean.name}"/>
             <br></br>
-            <h:outputLabel value="Address:" for="address"/><h:inputText id="address" value="#{accountMBean.address}" tabindex="2"/>
+            <h:outputLabel value="Address:" for="address"/><h:inputText id="address" value="#{accountMBean.address}"/>
             <br></br>
-            <h:outputLabel value="EMail:" for="email"/><h:inputText id="email" value="#{accountMBean.email}" tabindex="3"/>
-            <br></br>
-            <h:outputLabel value="Password:" for="password"/><h:inputSecret id="password" value="#{accountMBean.password}" tabindex="4"/>
+            <h:outputLabel value="EMail:" for="email"/><h:inputText id="email" value="#{accountMBean.email}" />
             <br></br>
             <h:outputLabel value="" for="save"/><h:commandButton id="save" value="Save" action="#{userSession.updateCustomer}"/>
+            <br></br>
+            <h:outputLink value="secured_index.xhtml">
+                <h:outputText value="Back" />
+            </h:outputLink>
         </h:form>
 	</ui:define>
 </ui:composition>

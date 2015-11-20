@@ -70,8 +70,8 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
     @Override
     public void updateUser(final CustomerDTO user) {
         
-        final Customer customer = (Customer)entityManager.createNamedQuery(
-                "Customer.findByName", Customer.class).setParameter("username", user.getUsername());
+        final Customer customer = entityManager.createNamedQuery(
+                "Customer.findByName", Customer.class).setParameter("username", user.getUsername()).getSingleResult();
         
         if (customer != null) {
             customer.setUsername(user.getUsername());
@@ -80,8 +80,6 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
             customer.setName(user.getName());
             customer.setAddress(user.getAddress());
             customer.setEmail(user.getEmail());
-            
-//            entityManager.persist(customer);
         }
     }
 

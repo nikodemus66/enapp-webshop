@@ -61,8 +61,16 @@ public class AccountMBean implements Serializable {
         return customer.getName();
     }
     
+    public void setName(String name) {
+        customer.setName(name);
+    }
+    
     public String getAddress() {
         return customer.getAddress();
+    }
+    
+    public void setAddress(String address) {
+        customer.setAddress(address);
     }
     
     public String getPassword() {
