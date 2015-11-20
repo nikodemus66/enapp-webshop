@@ -1,9 +1,7 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
 import java.util.List;
 
 
@@ -38,18 +36,9 @@ public class Customer implements Serializable {
 	@OneToMany(mappedBy="customerBean")
 	private List<Purchase> purchases;
 
-	//bi-directional many-to-many association to Authgroup
-	@ManyToMany
-	@JoinTable(
-		name="USERGROUP"
-		, joinColumns={
-			@JoinColumn(name="IDUSER")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="IDGROUP")
-			}
-		)
-	private List<Authgroup> authgroups;
+	//bi-directional many-to-one association to Usergroup
+	@OneToMany(mappedBy="customer")
+	private List<Usergroup> usergroups;
 
 	public Customer() {
 	}
@@ -124,12 +113,26 @@ public class Customer implements Serializable {
 		return purchas;
 	}
 
-	public List<Authgroup> getAuthgroups() {
-		return this.authgroups;
+	public List<Usergroup> getUsergroups() {
+		return this.usergroups;
 	}
 
-	public void setAuthgroups(List<Authgroup> authgroups) {
-		this.authgroups = authgroups;
+	public void setUsergroups(List<Usergroup> usergroups) {
+		this.usergroups = usergroups;
+	}
+
+	public Usergroup addUsergroup(Usergroup usergroup) {
+		getUsergroups().add(usergroup);
+		usergroup.setCustomer(this);
+
+		return usergroup;
+	}
+
+	public Usergroup removeUsergroup(Usergroup usergroup) {
+		getUsergroups().remove(usergroup);
+		usergroup.setCustomer(null);
+
+		return usergroup;
 	}
 
 }

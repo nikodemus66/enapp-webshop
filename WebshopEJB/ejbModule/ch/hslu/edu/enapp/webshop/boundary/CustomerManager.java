@@ -6,6 +6,8 @@ import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
 import ch.hslu.edu.enapp.webshop.common.CustomerServiceRemote;
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 import ch.hslu.edu.enapp.webshop.entity.Customer;
+import ch.hslu.edu.enapp.webshop.entity.Usergroup;
+import ch.hslu.edu.enapp.webshop.entity.UsergroupPK;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
@@ -57,6 +59,15 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
     public void addUser(final CustomerDTO user) {
         final Customer newUser = CustomerConverter.createEntityFromDTO(user);
         entityManager.persist(newUser);
+        entityManager.flush();
+
+        final UsergroupPK usergrpoupPk = new UsergroupPK();
+        usergrpoupPk.setIdgroup(1);
+        usergrpoupPk.setIduser(newUser.getCustomerid());
+        final Usergroup permission = new Usergroup();
+        permission.setId(usergrpoupPk);
+
+        entityManager.persist(permission);
     }
 
     @Override
@@ -89,7 +100,6 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
                 "Customer.findByName", Customer.class).setParameter("username", username).getSingleResult();
         
         return CustomerConverter.createDTOFromEntity(customer);
-        
     }
 
 }
