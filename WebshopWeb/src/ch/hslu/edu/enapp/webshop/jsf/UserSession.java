@@ -12,6 +12,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
+
 @Named
 @SessionScoped
 public class UserSession implements Serializable{
@@ -35,8 +37,8 @@ public class UserSession implements Serializable{
         this.username = FacesContext.getCurrentInstance()
     .getExternalContext().getUserPrincipal().getName();
         
-        account.setCustomer(customerService.getUser(this.username));
-        
+        if (this.username != null)
+            account.setCustomer(customerService.getUser(this.username));
     }
     
     public void logout(final ActionEvent event) throws IOException {
@@ -55,9 +57,10 @@ public class UserSession implements Serializable{
         customerService.updateUser(account.getCustomer());
     }
     
-    public void createCustomer() {
-        customerService.addUser(account.getCustomer());
-        
-//        account.login(account.getCustomer().getUsername(), account.getCustomer().getPassword());
-    }
+//    public void createCustomer() {
+//        customerService.addUser(account.getCustomer());
+////        account.setCustomer(new CustomerDTO());
+//        
+////        account.login(account.getCustomer().getUsername(), account.getCustomer().getPassword());
+//    }
 }

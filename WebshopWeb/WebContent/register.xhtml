@@ -4,11 +4,13 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
-    template="secured_template.xhtml">
+    template="resources/templates/template.xhtml">
 
-	<ui:define name="content">
-	    <h:form method="post" action="account">
-            <h:outputLabel value="Username:" for="username"/><h:outputText id="username" value="#{accountMBean.username}" />
+    <ui:define name="content">
+        <h:form method="post" action="register">
+            <h:outputLabel value="Username:" for="username"/><h:inputText id="username" value="#{accountMBean.username}" />
+            <br></br>
+            <h:outputLabel value="Password:" for="password"/><h:inputSecret id="password" value="#{accountMBean.password}" />
             <br></br>
             <h:outputLabel value="Name:" for="name"/><h:inputText id="name" value="#{accountMBean.name}"/>
             <br></br>
@@ -16,11 +18,11 @@
             <br></br>
             <h:outputLabel value="E-Mail:" for="email"/><h:inputText id="email" value="#{accountMBean.email}" />
             <br></br>
-            <h:outputLabel value="" for="save"/><h:commandButton id="save" value="Save" action="#{userSession.updateCustomer}"/>
+            <h:outputLabel value="" for="create"/><h:commandButton id="create" value="Create" action="#{accountMBean.createCustomer}"/>
             <br></br>
-            <h:outputLink value="secured_index.xhtml">
+            <h:outputLink value="login.xhtml">
                 <h:outputText value="Back" />
             </h:outputLink>
         </h:form>
-	</ui:define>
+    </ui:define>
 </ui:composition>

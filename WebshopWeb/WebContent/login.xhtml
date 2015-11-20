@@ -1,3 +1,4 @@
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
@@ -16,6 +17,10 @@
                 <h:inputSecret id="j_password" size="35" tabindex="2" />
                 <h:outputLabel value="" for="login" />
                 <h:commandButton id="login" type="submit" value="Login" />
+                <br></br>
+                <h:outputLink value="register.xhtml">
+                    <h:outputText value="Register" />
+                </h:outputLink>
             </h:panelGrid>
         </form>
     </body>

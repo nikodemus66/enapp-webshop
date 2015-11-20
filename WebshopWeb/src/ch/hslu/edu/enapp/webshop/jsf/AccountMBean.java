@@ -49,13 +49,13 @@ public class AccountMBean implements Serializable {
         return customer.getUsername();
     }
     
-//    public void setUsername(String username) {
-//        customer.setUsername(username);
-//    }
+    public void setUsername(String username) {
+        customer.setUsername(username);
+    }
     
-//    public void setPassword(String password) {
-//        customer.setPassword(password);
-//    }
+    public void setPassword(String password) {
+        customer.setPassword(password);
+    }
     
     public String getName() {
         return customer.getName();
@@ -83,5 +83,12 @@ public class AccountMBean implements Serializable {
     
     public void setEmail(String email) {
         customer.setEmail(email);
+    }
+    
+    public void createCustomer() {
+        customerService.addUser(customer);
+//        account.setCustomer(new CustomerDTO());
+        
+//        account.login(account.getCustomer().getUsername(), account.getCustomer().getPassword());
     }
 }

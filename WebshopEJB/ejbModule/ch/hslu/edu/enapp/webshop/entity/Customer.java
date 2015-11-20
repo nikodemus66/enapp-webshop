@@ -1,7 +1,9 @@
 package ch.hslu.edu.enapp.webshop.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -16,6 +18,7 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int customerid;
 
 	@Column(name="\"ADDRESS\"")
