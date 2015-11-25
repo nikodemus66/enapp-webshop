@@ -26,7 +26,7 @@ public class ItemManager implements ItemManagerLocal {
     @PersistenceContext
     EntityManager entityManager;
     
-    private ItemService itemService = new ItemService();
+//    private ItemService itemService = new ItemService();
     
     /**
      * Default constructor. 
@@ -36,24 +36,26 @@ public class ItemManager implements ItemManagerLocal {
     }
 
     @Override
-    public List<ProductDTO> getItems() {       
+    public List<ProductDTO> getItems() {
+        ItemService itemService = new ItemService();
+        
         List<ProductDTO> productDtos = new ArrayList<ProductDTO>();
        
-//        ItemFilter itemFilter = new ItemFilter();
-//        
-//        itemFilter.setField(ItemFields.PRODUCT_GROUP_CODE);
-//        itemFilter.setCriteria("MP3");
-//        
-//        List<ItemFilter> itemFilterList = new ArrayList<ItemFilter>();
-//        itemFilterList.add(itemFilter);
-//        
-//        ItemPort itemPort = itemService.getItemPort();
-//        
-//        ItemList itemList = itemPort.readMultiple(itemFilterList, null, 0);
-//        
-//        for(Item item: itemList.getItem()) {
-//            productDtos.add(ProductConverter.createDTOFromWebservice(item));
-//        }
+        ItemFilter itemFilter = new ItemFilter();
+        
+        itemFilter.setField(ItemFields.PRODUCT_GROUP_CODE);
+        itemFilter.setCriteria("MP3");
+        
+        List<ItemFilter> itemFilterList = new ArrayList<ItemFilter>();
+        itemFilterList.add(itemFilter);
+        
+        ItemPort itemPort = itemService.getItemPort();
+        
+        ItemList itemList = itemPort.readMultiple(itemFilterList, null, 5);
+        
+        for(Item item: itemList.getItem()) {
+            productDtos.add(ProductConverter.createDTOFromWebservice(item));
+        }
         
         return productDtos;
     }   

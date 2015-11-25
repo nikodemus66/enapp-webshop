@@ -32,6 +32,9 @@ public class Customer implements Serializable {
 
 	private String username;
 
+   @Column(name="\"DYNNAVUSERID\"")
+    private String dynNavUserId;
+	
 	//bi-directional many-to-one association to Purchase
 	@OneToMany(mappedBy="customerBean")
 	private List<Purchase> purchases;
@@ -86,6 +89,14 @@ public class Customer implements Serializable {
 	public String getUsername() {
 		return this.username;
 	}
+	
+   public void setDynNavUserId(String dynNavuserId) {
+        this.dynNavUserId = dynNavuserId;
+    }
+
+    public String getDynNavUserId() {
+        return this.dynNavUserId;
+    }
 
 	public void setUsername(String username) {
 		this.username = username;
