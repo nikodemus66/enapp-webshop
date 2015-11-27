@@ -23,6 +23,8 @@ public class Purchase implements Serializable {
 
 	@Column(name="\"STATE\"")
 	private String state;
+	
+	private String paymentid;
 
 	//bi-directional many-to-one association to Customer
 	@ManyToOne
@@ -89,5 +91,13 @@ public class Purchase implements Serializable {
 
 		return purchaseitem;
 	}
+
+    public String getPaymentid() {
+        return paymentid;
+    }
+
+    public void setPaymentid(String paymentid) {
+        this.paymentid = paymentid;
+    }
 
 }

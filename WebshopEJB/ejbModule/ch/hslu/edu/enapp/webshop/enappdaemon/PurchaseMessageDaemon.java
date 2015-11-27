@@ -14,16 +14,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PurchaseMessageDaemon {
 
     @XmlElement(name = "payId")
-    private int paymentId;
+    private String paymentId = "17711624";
 
     @XmlElement(name = "purchaseId")
-    private int purchaseId;
+    private String purchaseId;
 
     @XmlElement(name = "student")
     private String student;
 
     @XmlElement(name = "totalPrice")
-    private double totalAmount;
+    private double totalAmount = 10.99;
 
     @XmlElement(name = "date")
     private Date date;
@@ -35,19 +35,19 @@ public class PurchaseMessageDaemon {
     @XmlElement(name = "line")
     private Collection<LineDaemon> lines;
 
-    public int getPaymentId() {
+    public String getPaymentId() {
         return paymentId;
     }
 
-    public void setPaymentId(final int paymentId) {
+    public void setPaymentId(final String paymentId) {
         this.paymentId = paymentId;
     }
 
-    public int getPurchaseId() {
+    public String getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(final int purchaseId) {
+    public void setPurchaseId(final String purchaseId) {
         this.purchaseId = purchaseId;
     }
 

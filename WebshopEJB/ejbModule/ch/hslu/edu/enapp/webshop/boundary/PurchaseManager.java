@@ -7,19 +7,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.Resource;
 import javax.ejb.Local;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.jms.ConnectionFactory;
-import javax.jms.Queue;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 
 import org.apache.wink.client.ClientResponse;
+import org.apache.wink.client.Resource;
 import org.apache.wink.client.RestClient;
 
 import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
@@ -27,9 +25,9 @@ import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerRemote;
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
-import ch.hslu.edu.enapp.webshop.common.exception.PurchaseException;
 import ch.hslu.edu.enapp.webshop.enappdaemon.CustomerDaemon;
 import ch.hslu.edu.enapp.webshop.enappdaemon.LineDaemon;
+import ch.hslu.edu.enapp.webshop.enappdaemon.NcResponse;
 import ch.hslu.edu.enapp.webshop.enappdaemon.PurchaseMessageDaemon;
 import ch.hslu.edu.enapp.webshop.enappdaemon.SalesOrderDaemon;
 import ch.hslu.edu.enapp.webshop.entity.Customer;
@@ -52,6 +50,8 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
     @Inject
     EnappQueueHandler enappQueueHandler;
     
+    @Inject PaymentManager paymentManager;
+    
     /**
      * Default constructor. 
      */
@@ -73,7 +73,7 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
             
             CustomerDaemon customerDeamon = createCustomerDeamon(customer);
             
-//              Set purchase fields
+//          Set purchase fields
             purchase.setCustomerBean(customer);
             purchase.setDatetime(new Timestamp(System.currentTimeMillis()));
             purchase.setState("000");
@@ -102,22 +102,25 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
             purchase.setPurchaseitems(purchaseItems);
             
             entityManager.persist(purchase);
-//            entityManager.flush();
             
-            PurchaseMessageDaemon purchaseMessageDeamon = createPurchaseMessageDeamon(purchase, customerDeamon, lineDeamons);
-
             String correlationId = UUID.randomUUID().toString();
             
-            //TODO
-//            enappQueueHandler.sendPurchaseMessage(correlationId, XmlToString(purchaseMessageDeamon));
+            NcResponse response = paymentManager.execPayment(correlationId, 12.99, CustomerConverter.createDTOFromEntity(customer));
+            purchase.setPaymentid(response.getPayId());
             
-//              Set DynNavUserId if not exists
-//            if (customer.getDynNavUserId() == null) {
-//                CustomerDTO customerDto = CustomerConverter.createDTOFromEntity(customer);
-//                SalesOrderDaemon salesOrder = getOrderState(correlationId);
-//                customerDto.setDynNavUserId(salesOrder.getExternalCustomerId());
-//                customerManager.updateUser(customerDto);
-//            }
+            PurchaseMessageDaemon purchaseMessageDeamon = createPurchaseMessageDeamon(correlationId, purchase, customerDeamon, lineDeamons);
+            enappQueueHandler.sendPurchaseMessage(correlationId, XmlToString(purchaseMessageDeamon));
+            
+//          Set DynNavUserId if not exists
+            if (customer.getDynNavUserId() == null) {
+                CustomerDTO customerDto = CustomerConverter.createDTOFromEntity(customer);
+                SalesOrderDaemon salesOrder = getOrderState(correlationId);
+                
+                if (salesOrder != null) {
+                    customerDto.setDynNavUserId(salesOrder.getExternalCustomerId());
+                    customerManager.updateUser(customerDto);
+                }
+            }
      }
   }
     
@@ -134,14 +137,18 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
         return customerDeamon;
     }
     
-    private PurchaseMessageDaemon createPurchaseMessageDeamon(Purchase purchase, CustomerDaemon customerDeamon, List<LineDaemon> lineDeamons) {
+    private PurchaseMessageDaemon createPurchaseMessageDeamon(String correlationId, Purchase purchase, CustomerDaemon customerDeamon, List<LineDaemon> lineDeamons) {
         PurchaseMessageDaemon purchaseMessageDeamon = new PurchaseMessageDaemon();
         
         purchaseMessageDeamon.setCustomer(customerDeamon);
+        purchaseMessageDeamon.setStudent("thkeller");
         purchaseMessageDeamon.setLines(lineDeamons);
+        purchaseMessageDeamon.setPaymentId("52819897");
+//        purchaseMessageDeamon.setPaymentId(purchase.getPaymentid());
         
         purchaseMessageDeamon.setDate(purchase.getDatetime());
-        purchaseMessageDeamon.setPurchaseId(purchase.getPurchaseid());
+        purchaseMessageDeamon.setPurchaseId(correlationId);
+        
         //TODO
 //        purchaseMessageDeamon.setTotalAmount(totalAmount);
 //        purchaseMessageDeamon.setPaymentId(purchase.get);
@@ -176,12 +183,10 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
     }
     
     private SalesOrderDaemon getOrderState(final String correlationId) {
-         final String requestURI = "http://enapp-daemons.el.eee.intern:9080/EnappDaemonWeb/rest/salesorder/corr/" + correlationId;
-//        final String requestURI = "http://10.177.1.5:9080/EnappDaemonWeb/rest/salesorder/corr/" + correlationId;
+        final String requestURI = "http://enapp-daemons.el.eee.intern:9080/EnappDaemonWeb/rest/salesorder/corr/" + correlationId;
 
-//        System.out.println("REST SalesOrderStatus URL: " + requestURI);
         final RestClient client = new RestClient();
-        final org.apache.wink.client.Resource webResource = client.resource(requestURI);
+        final Resource webResource = client.resource(requestURI);
 
         SalesOrderDaemon salesOrderStatus = new SalesOrderDaemon();
         salesOrderStatus.setOrderStatus("error");

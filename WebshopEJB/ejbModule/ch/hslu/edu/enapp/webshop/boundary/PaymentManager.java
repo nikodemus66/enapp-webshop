@@ -12,6 +12,7 @@ import org.apache.wink.client.RestClient;
 import org.apache.wink.common.internal.MultivaluedMapImpl;
 
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
+import ch.hslu.edu.enapp.webshop.enappdaemon.NcResponse;
 
 /**
  * Session Bean implementation class PaymentManager
@@ -40,7 +41,7 @@ public class PaymentManager {
         // TODO Auto-generated constructor stub
     }
     
-    public ClientResponse execPayment(String orderId, double amount, CustomerDTO customer) {
+    public NcResponse execPayment(String orderId, double amount, CustomerDTO customer) {
         final MultivaluedMap<String, String> restData = new MultivaluedMapImpl<String, String>();
         final String amountPostfinance = Long.toString(Math.round(100 * amount));
 
@@ -79,7 +80,8 @@ public class PaymentManager {
         final RestClient client = new RestClient();
         final Resource webResource = client.resource(URI);
         
-        return webResource.contentType("application/x-www-form-urlencoded").post(restData);      
+        NcResponse response = webResource.accept("application/x-www-form-urlencoded").post(NcResponse.class, restData);      
+        return response;
     }
     
     private static String byteArray2HexString(final byte[] bytes) {
