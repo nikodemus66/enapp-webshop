@@ -1,11 +1,11 @@
-package ch.hslu.edu.enapp.webshop.enappdeamon;
+package ch.hslu.edu.enapp.webshop.enappdaemon;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class CustomerDeamon {
+public class CustomerDaemon {
 
     @XmlElement(name = "dynNavCustNo")
     private String externalCustomerId;

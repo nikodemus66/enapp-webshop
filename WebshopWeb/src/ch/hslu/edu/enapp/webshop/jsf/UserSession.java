@@ -12,16 +12,17 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 
 @Named
 @SessionScoped
 public class UserSession implements Serializable{
     @Inject
-    ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal customerService;
+    CustomerServiceLocal customerService;
     
     @Inject
-    ch.hslu.edu.enapp.webshop.jsf.AccountMBean account;
+    AccountMBean account;
     
 //    AccountMBean account = new AccountMBean();
     

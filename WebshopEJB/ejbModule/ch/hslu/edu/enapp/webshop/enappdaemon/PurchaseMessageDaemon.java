@@ -1,4 +1,4 @@
-package ch.hslu.edu.enapp.webshop.enappdeamon;
+package ch.hslu.edu.enapp.webshop.enappdaemon;
 
 import java.util.Collection;
 import java.util.Date;
@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "purchaseMessage")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class PurchaseMessageDeamon {
+public class PurchaseMessageDaemon {
 
     @XmlElement(name = "payId")
     private int paymentId;
@@ -29,11 +29,11 @@ public class PurchaseMessageDeamon {
     private Date date;
 
     @XmlElement(name = "customer")
-    private CustomerDeamon customer;
+    private CustomerDaemon customer;
 
     @XmlElementWrapper(name = "lines")
     @XmlElement(name = "line")
-    private Collection<LineDeamon> lines;
+    private Collection<LineDaemon> lines;
 
     public int getPaymentId() {
         return paymentId;
@@ -75,19 +75,19 @@ public class PurchaseMessageDeamon {
         this.date = date;
     }
 
-    public CustomerDeamon getCustomer() {
+    public CustomerDaemon getCustomer() {
         return customer;
     }
 
-    public void setCustomer(final CustomerDeamon customer) {
+    public void setCustomer(final CustomerDaemon customer) {
         this.customer = customer;
     }
 
-    public Collection<LineDeamon> getLines() {
+    public Collection<LineDaemon> getLines() {
         return lines;
     }
 
-    public void setLines(final Collection<LineDeamon> lines) {
+    public void setLines(final Collection<LineDaemon> lines) {
         this.lines = lines;
     }
 }

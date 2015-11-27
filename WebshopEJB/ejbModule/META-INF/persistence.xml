@@ -2,7 +2,6 @@
 	<persistence-unit name="WebshopEJB" transaction-type="JTA">
 		<jta-data-source>jdbc/webshop</jta-data-source>
 		<class>ch.hslu.edu.enapp.webshop.entity.Customer</class>
-		<class>ch.hslu.edu.enapp.webshop.entity.Product</class>
 		<class>ch.hslu.edu.enapp.webshop.entity.Purchase</class>
 		<class>ch.hslu.edu.enapp.webshop.entity.Purchaseitem</class>
         <class>ch.hslu.edu.enapp.webshop.entity.Usergroup</class>

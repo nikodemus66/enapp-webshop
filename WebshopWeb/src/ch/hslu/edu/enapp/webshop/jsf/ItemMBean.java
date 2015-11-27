@@ -9,6 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.hslu.edu.enapp.webshop.common.ItemManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.dto.*;
 
 @Named
@@ -18,7 +19,7 @@ public class ItemMBean implements Serializable {
     private List<ProductDTO> productList = new ArrayList<ProductDTO>();
     
     @Inject
-    ch.hslu.edu.enapp.webshop.common.ItemManagerLocal items;
+    ItemManagerLocal items;
     
     @PostConstruct
     public void init() {

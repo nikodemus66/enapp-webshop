@@ -24,10 +24,7 @@ public class Purchaseitem implements Serializable {
 
 	private BigDecimal unitprice;
 
-	//bi-directional many-to-one association to Product
-	@ManyToOne
-	@JoinColumn(name="PRODUCT")
-	private Product productBean;
+	private String product;
 
 	//bi-directional many-to-one association to Purchase
 	@ManyToOne
@@ -69,12 +66,12 @@ public class Purchaseitem implements Serializable {
 		this.unitprice = unitprice;
 	}
 
-	public Product getProductBean() {
-		return this.productBean;
+	public String getProductBean() {
+		return this.product;
 	}
 
-	public void setProductBean(Product productBean) {
-		this.productBean = productBean;
+	public void setProduct(String product) {
+		this.product = product;
 	}
 
 	public Purchase getPurchaseBean() {

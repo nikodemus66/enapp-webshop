@@ -16,6 +16,8 @@ public class CustomerDTO implements Serializable {
     private String password;
 
     private String username;
+    
+    private String dynNavUserId;
 
     public CustomerDTO() {
     }
@@ -66,6 +68,14 @@ public class CustomerDTO implements Serializable {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+    
+    public String getDynNavUserId() {
+        return this.dynNavUserId;
+    }
+
+    public void setDynNavUserId(String dynNavUserId) {
+        this.dynNavUserId = dynNavUserId;
     }
 
 }

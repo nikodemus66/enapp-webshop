@@ -1,4 +1,4 @@
-package ch.hslu.edu.enapp.webshop.enappdeamon;
+package ch.hslu.edu.enapp.webshop.enappdaemon;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "salesorder")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class SalesOrderDeamon {
+public class SalesOrderDaemon {
 
     @XmlElement(name = "correlationId")
     private String correlationId;

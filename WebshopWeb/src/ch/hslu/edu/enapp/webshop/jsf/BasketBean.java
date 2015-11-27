@@ -10,6 +10,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
+import ch.hslu.edu.enapp.webshop.common.PurchaseManagerRemote;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
 import ch.hslu.edu.enapp.webshop.common.exception.PurchaseException;
 
@@ -21,8 +23,9 @@ public class BasketBean implements Serializable{
      */
     private static final long serialVersionUID = 1L;
 
-    @EJB
-    ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal purchaseManager;
+//    @EJB
+    @Inject
+    PurchaseManagerLocal purchaseManager;
     
     private List<ProductDTO> basket;
     
@@ -34,7 +37,7 @@ public class BasketBean implements Serializable{
         try {           
             purchaseManager.purchase(getUsername(), basket);
             clearBasket();
-        } catch (PurchaseException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

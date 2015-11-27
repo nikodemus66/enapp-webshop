@@ -92,6 +92,7 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
             customer.setName(user.getName());
             customer.setAddress(user.getAddress());
             customer.setEmail(user.getEmail());
+            customer.setDynNavUserId(user.getDynNavUserId());
         }
     }
 
