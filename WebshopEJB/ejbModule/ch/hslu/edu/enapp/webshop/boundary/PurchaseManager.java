@@ -143,15 +143,18 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
         purchaseMessageDeamon.setCustomer(customerDeamon);
         purchaseMessageDeamon.setStudent("thkeller");
         purchaseMessageDeamon.setLines(lineDeamons);
-        purchaseMessageDeamon.setPaymentId("52819897");
-//        purchaseMessageDeamon.setPaymentId(purchase.getPaymentid());
+        if (purchase.getPaymentid() == null) {
+            purchaseMessageDeamon.setPaymentId("52819897");
+        }
+        else {
+            purchaseMessageDeamon.setPaymentId(purchase.getPaymentid());
+        }
         
         purchaseMessageDeamon.setDate(purchase.getDatetime());
         purchaseMessageDeamon.setPurchaseId(correlationId);
         
         //TODO
 //        purchaseMessageDeamon.setTotalAmount(totalAmount);
-//        purchaseMessageDeamon.setPaymentId(purchase.get);
         
         return purchaseMessageDeamon;
     }

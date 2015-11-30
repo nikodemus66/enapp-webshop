@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.core.MultivaluedMap;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.wink.client.ClientResponse;
 import org.apache.wink.client.Resource;
@@ -30,7 +32,12 @@ public class PaymentManager {
     private final String CURRENCY = "CHF";
     
 //  Mastercard
-    private final String CARDNO = "5399 9999 9999 9999";
+//    private final String CARDNO = "5399 9999 9999 9999";
+//    private final String EXPIRY_DATE = "09/17";
+//    private final String CVC = "123";
+    
+    //VISA
+    private final String CARDNO = "4111 1111 1111 1111";
     private final String EXPIRY_DATE = "09/17";
     private final String CVC = "123";
     
@@ -56,7 +63,7 @@ public class PaymentManager {
         sha1sig.append("PSPID=" + PSPID + PSWD_SHA1);
         sha1sig.append("PSWD=" + PSWD + PSWD_SHA1);
         sha1sig.append("USERID=" + USERID + PSWD_SHA1);
-
+        
         try {
             final MessageDigest digest = MessageDigest.getInstance("SHA-1");
             final byte[] hashedBytes = digest.digest(sha1sig.toString().getBytes("UTF-8"));
@@ -71,17 +78,24 @@ public class PaymentManager {
         restData.add("CURRENCY", CURRENCY);
         restData.add("CVC", CVC);
         restData.add("ED", EXPIRY_DATE);
-        restData.add("ORDERID", orderId);
+        restData.add("OrderId", orderId);
         restData.add("PSPID", PSPID);
         restData.add("PSWD", PSWD);
-        restData.add("SHASIGN", shasign);
+//        restData.add("SHASIGN", shasign);
         restData.add("USERID", USERID);
 
         final RestClient client = new RestClient();
         final Resource webResource = client.resource(URI);
         
-        NcResponse response = webResource.accept("application/x-www-form-urlencoded").post(NcResponse.class, restData);      
-        return response;
+        NcResponse ncResponse = webResource.contentType("application/x-www-form-urlencoded").post(NcResponse.class, restData);
+        
+        System.out.println("### OrderId:     " + ncResponse.getOrderId());
+        System.out.println("### PAYID:       " + ncResponse.getPayId());
+        System.out.println("### NCSTATUS:    " + ncResponse.getNcStatus());
+        System.out.println("### NCERROR:     " + ncResponse.getNcError());
+        System.out.println("### NCERRORPLUS: " + ncResponse.getNcErrorPlus());
+        
+        return ncResponse;
     }
     
     private static String byteArray2HexString(final byte[] bytes) {

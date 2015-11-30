@@ -33,13 +33,10 @@ public class BasketBean implements Serializable{
         basket = new ArrayList<ProductDTO>();
     }
     
-    public void doPurchase() { 
-        try {           
-            purchaseManager.purchase(getUsername(), basket);
-            clearBasket();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void doPurchase() throws Exception {           
+        purchaseManager.purchase(getUsername(), basket);
+        clearBasket();
+
     }
     
     public List<ProductDTO> getAllItems() {
