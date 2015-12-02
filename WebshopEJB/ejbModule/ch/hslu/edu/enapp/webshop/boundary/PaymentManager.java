@@ -78,10 +78,10 @@ public class PaymentManager {
         restData.add("CURRENCY", CURRENCY);
         restData.add("CVC", CVC);
         restData.add("ED", EXPIRY_DATE);
-        restData.add("OrderId", orderId);
+        restData.add("ORDERID", orderId);
         restData.add("PSPID", PSPID);
         restData.add("PSWD", PSWD);
-//        restData.add("SHASIGN", shasign);
+        restData.add("SHASIGN", shasign);
         restData.add("USERID", USERID);
 
         final RestClient client = new RestClient();
