@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -37,15 +38,18 @@ public class BasketBean implements Serializable{
         basket = new ArrayList<ProductDTO>();
     }
     
-    public void doPurchase() throws Exception {           
-        String correlationId = purchaseManager.purchase(getUsername(), basket);
-        
-        customerManager.setDynNavIdFromJMS(getUsername(), correlationId);
-        
-        purchaseManager.setPurchaseStateFromJMS(correlationId);
-        
-        clearBasket();
-
+    public void doPurchase() throws Exception {
+        if (!this.basket.isEmpty()) {
+            String correlationId = purchaseManager.purchase(getUsername(), basket);
+            
+            customerManager.setDynNavIdFromJMS(getUsername(), correlationId);
+            
+            purchaseManager.setPurchaseStateFromJMS(correlationId);
+            
+            sendPurchaseStatusToUser();
+            
+            clearBasket();
+        }
     }
     
     public List<ProductDTO> getAllItems() {
@@ -70,5 +74,11 @@ public class BasketBean implements Serializable{
     
     private String getUsername() {
         return FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
+    }
+    
+    private void sendPurchaseStatusToUser() {
+        FacesMessage fm = new FacesMessage("Bestellung abgeschlossen");
+        fm.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage("Bestellung erfolgreich abgeschlossen!", fm);
     }
 }

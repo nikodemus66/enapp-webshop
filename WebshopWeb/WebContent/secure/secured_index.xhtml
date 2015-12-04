@@ -7,6 +7,13 @@
     template="secured_template.xhtml">
 
     <ui:define name="content">
+        <div id="admin">
+            <h:form>
+                <h:outputLink value="secured_admin.xhtml">
+                    <h:outputText value="Admin" />
+                </h:outputLink>
+            </h:form>
+        </div>
         <div id="account">
             <h2>Account #{userSession.username}</h2>
             <h:form>
@@ -21,24 +28,19 @@
                 <h:commandLink actionListener="#{userSession.logout}" value="Logout"></h:commandLink>
             </h:form>
         </div>
-        <div id="products">
-            <h2>Available Products (<h:outputText value="#{itemMBean.itemCount}" />)</h2>
-            <h:form id="productlist">
-                <ui:repeat value="#{itemMBean.items}" var="item"> <a> </a>
-                    <p><span padding="10"><h:outputText value="#{item.name}"/></span> 
-                       <span padding="10"><h:outputText value="#{item.description}"/></span>
-                       <span padding="10"><h:outputText value="#{item.mediapath}"/> </span>
-                       <span padding="10"><h:outputText value="#{item.unitprice}"/><br></br></span>
-                       <h:commandButton
+        <div id="purchase">
+            <h3>Purchase</h3>
+            <h:form id="purchase">
+                <h:commandButton
                             type="submit"
-                            value="Add to Basket"
+                            value="Purchase"
                             styleClass="btn btn-sm btn-default"
-                            action="#{basketBean.addItem(item)}">
-                        </h:commandButton>
-                    </p>
-                </ui:repeat>
+                            action="#{basketBean.doPurchase}">
+                </h:commandButton>
             </h:form>
+            <h:messages />
         </div>
+        <br></br>
         <div id ="basket">
             <h2>Shopping Basket (<h:outputText value="#{basketBean.productCount}" />)</h2>
             <h:form id="basketproducts">
@@ -57,23 +59,23 @@
                 </ui:repeat>
             </h:form> 
         </div>
-        <div id="purchase">
-            <h3>Purchase</h3>
-            <h:form id="purchase">
-                <h:commandButton
+        <div id="products">
+            <h2>Available Products (<h:outputText value="#{itemMBean.itemCount}" />)</h2>
+            <h:form id="productlist">
+                <ui:repeat value="#{itemMBean.items}" var="item"> <a> </a>
+                    <p><span padding="10"><h:outputText value="#{item.name}"/></span> 
+                       <span padding="10"><h:outputText value="#{item.description}"/></span>
+                       <span padding="10"><h:outputText value="#{item.mediapath}"/> </span>
+                       <span padding="10"><h:outputText value="#{item.unitprice}"/><br></br></span>
+                       <h:commandButton
                             type="submit"
-                            value="Purchase"
+                            value="Add to Basket"
                             styleClass="btn btn-sm btn-default"
-                            action="#{basketBean.doPurchase}">
-                </h:commandButton>
+                            action="#{basketBean.addItem(item)}">
+                        </h:commandButton>
+                    </p>
+                </ui:repeat>
             </h:form>
-        </div>
-        <br></br>
-        <br></br>
-        <div id="admin">
-            <h:form>
-                <h:commandLink action="secured_admin.xhtml" value="Admin"></h:commandLink>
-            </h:form>
-        </div>    
+        </div>  
     </ui:define>
 </ui:composition>

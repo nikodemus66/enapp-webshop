@@ -7,6 +7,7 @@
     template="resources/templates/template.xhtml">
 
     <ui:define name="content">
+        <h:messages />
         <h:form method="post" action="register">
             <h:outputLabel value="Username:" for="username"/><h:inputText id="username" value="#{accountMBean.username}" />
             <br></br>
@@ -19,6 +20,7 @@
             <h:outputLabel value="E-Mail:" for="email"/><h:inputText id="email" value="#{accountMBean.email}" />
             <br></br>
             <h:outputLabel value="" for="create"/><h:commandButton id="create" value="Create" action="#{accountMBean.createCustomer}"/>
+            <br></br>
             <br></br>
             <h:outputLink value="login.xhtml">
                 <h:outputText value="Back" />

@@ -1,8 +1,12 @@
 package ch.hslu.edu.enapp.webshop.jsf;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -20,16 +24,6 @@ public class AccountMBean implements Serializable {
     
     private CustomerDTO customer = new CustomerDTO();;
     private boolean loggedIn = false;
-    
-//    public void login(String username, String password) {
-//        if (this.customerService.checkPasswordForUsername(username, password)) {
-//            customer = customerService.getUser(username);
-//            this.loggedIn = true;
-//        }
-//        else {
-//            //TODO error handling
-//        }
-//    }
     
     public void logout() {
         this.loggedIn = false;
@@ -87,10 +81,13 @@ public class AccountMBean implements Serializable {
         customer.setEmail(email);
     }
     
-    public void createCustomer() {
+    public void createCustomer() throws IOException {
         customerService.addUser(customer);
-//        account.setCustomer(new CustomerDTO());
         
-//        account.login(account.getCustomer().getUsername(), account.getCustomer().getPassword());
+        FacesMessage fm = new FacesMessage("User " + customer.getUsername() + " wurde erstellt!");
+        fm.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage("User " + customer.getUsername() + " wurde erstellt!", fm);
+        
+        customer = new CustomerDTO();
     }
 }

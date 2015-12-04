@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -62,16 +63,13 @@ public class UserSession implements Serializable{
     
     public void updateCustomer() {
         customerService.updateUser(account.getCustomer());
+        
+        FacesMessage fm = new FacesMessage("User " + account.getCustomer().getUsername() + " wurde aktualisiert!");
+        fm.setSeverity(FacesMessage.SEVERITY_INFO);
+        FacesContext.getCurrentInstance().addMessage("User " + account.getCustomer().getUsername() + " wurde aktualisiert!", fm);
     }
     
     public List<PurchaseDTO> getPurchases() throws Exception{
         return purchaseManager.getPurchases(this.username);
     }
-    
-//    public void createCustomer() {
-//        customerService.addUser(account.getCustomer());
-////        account.setCustomer(new CustomerDTO());
-//        
-////        account.login(account.getCustomer().getUsername(), account.getCustomer().getPassword());
-//    }
 }

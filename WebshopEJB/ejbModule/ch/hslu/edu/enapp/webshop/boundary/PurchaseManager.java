@@ -110,22 +110,6 @@ public class PurchaseManager implements PurchaseManagerRemote, PurchaseManagerLo
             
             PurchaseMessageDaemon purchaseMessageDeamon = createPurchaseMessageDeamon(correlationId, totalAmount, purchase, customerDeamon, lineDeamons);
             enappQueueHandler.sendPurchaseMessage(correlationId, XmlToString(purchaseMessageDeamon));
-            
-//          Set DynNavUserId if not exists
-//            if (customer.getDynNavUserId() == null) {
-//                SalesOrderDaemon salesOrder = enappQueueHandler.getOrderState(correlationId);
-//                
-//                if (salesOrder != null) {
-//                    purchase.setState(salesOrder.getOrderStatus());
-//                    
-//                    System.out.print("External Customer ID" + salesOrder.getExternalCustomerId());
-//                    
-//                    CustomerDTO customerDto = CustomerConverter.createDTOFromEntity(customer);
-//                    customerDto.setDynNavUserId(salesOrder.getExternalCustomerId());
-//                    
-//                    customerManager.updateUser(customerDto);
-//                }
-//            }
      }
         
         return correlationId;
