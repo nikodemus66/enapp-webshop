@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.PurchaseManagerRemote;
 import ch.hslu.edu.enapp.webshop.common.dto.ProductDTO;
@@ -27,6 +28,9 @@ public class BasketBean implements Serializable{
     @Inject
     PurchaseManagerLocal purchaseManager;
     
+    @Inject
+    CustomerServiceLocal customerManager;
+    
     private List<ProductDTO> basket;
     
     public BasketBean() {
@@ -34,7 +38,12 @@ public class BasketBean implements Serializable{
     }
     
     public void doPurchase() throws Exception {           
-        purchaseManager.purchase(getUsername(), basket);
+        String correlationId = purchaseManager.purchase(getUsername(), basket);
+        
+        customerManager.setDynNavIdFromJMS(getUsername(), correlationId);
+        
+        purchaseManager.setPurchaseStateFromJMS(correlationId);
+        
         clearBasket();
 
     }

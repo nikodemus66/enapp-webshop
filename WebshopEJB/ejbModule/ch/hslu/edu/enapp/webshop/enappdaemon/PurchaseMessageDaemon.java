@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PurchaseMessageDaemon {
 
     @XmlElement(name = "payId")
-    private String paymentId = "17711624";
+    private String paymentId;
 
     @XmlElement(name = "purchaseId")
     private String purchaseId;
@@ -23,7 +23,7 @@ public class PurchaseMessageDaemon {
     private String student;
 
     @XmlElement(name = "totalPrice")
-    private double totalAmount = 10.99;
+    private double totalAmount;
 
     @XmlElement(name = "date")
     private Date date;

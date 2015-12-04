@@ -10,7 +10,7 @@ public class PurchaseitemDTO implements Serializable {
 
 	private String description;
 
-	private int product;
+	private String product;
 
 	private int purchase;
 
@@ -37,11 +37,11 @@ public class PurchaseitemDTO implements Serializable {
 		this.description = description;
 	}
 
-	public int getProduct() {
+	public String getProduct() {
 		return this.product;
 	}
 
-	public void setProduct(int product) {
+	public void setProduct(String product) {
 		this.product = product;
 	}
 

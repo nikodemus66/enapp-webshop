@@ -3,6 +3,7 @@ package ch.hslu.edu.enapp.webshop.jsf;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -14,6 +15,8 @@ import javax.inject.Named;
 
 import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
+import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
+import ch.hslu.edu.enapp.webshop.common.dto.PurchaseDTO;
 
 @Named
 @SessionScoped
@@ -23,6 +26,9 @@ public class UserSession implements Serializable{
     
     @Inject
     AccountMBean account;
+    
+    @Inject
+    PurchaseManagerLocal purchaseManager;
     
 //    AccountMBean account = new AccountMBean();
     
@@ -56,6 +62,10 @@ public class UserSession implements Serializable{
     
     public void updateCustomer() {
         customerService.updateUser(account.getCustomer());
+    }
+    
+    public List<PurchaseDTO> getPurchases() throws Exception{
+        return purchaseManager.getPurchases(this.username);
     }
     
 //    public void createCustomer() {

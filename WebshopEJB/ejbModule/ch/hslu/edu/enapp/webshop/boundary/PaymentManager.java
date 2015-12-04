@@ -87,7 +87,7 @@ public class PaymentManager {
         final RestClient client = new RestClient();
         final Resource webResource = client.resource(URI);
         
-        NcResponse ncResponse = webResource.contentType("application/x-www-form-urlencoded").post(NcResponse.class, restData);
+        NcResponse ncResponse = webResource.accept("application/x-www-form-urlencoded").post(NcResponse.class, restData);
         
         System.out.println("### OrderId:     " + ncResponse.getOrderId());
         System.out.println("### PAYID:       " + ncResponse.getPayId());

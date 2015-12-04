@@ -1,20 +1,19 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    template="secured_template.xhtml">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-
-<ui:composition template="">
-	<ui:define name="header">
-	    Add your header here or delete to use the default
-	</ui:define>
-	<ui:define name="content">
-	    Add your content here or delete to use the default
-	</ui:define>
-	<ui:define name="footer">
-	    Add your footer here or delete to use the default
-	</ui:define>
+    <ui:define name="content">
+        <h:form method="post" action="purchases">
+               <ui:repeat value="#{userSession.purchases}" var="purchase"> <a> </a>
+                    <p><span padding="10"><h:outputText value="#{purchase.id}"/></span> 
+                       <span padding="10"><h:outputText value="#{purchase.datetime}"/></span>
+                       <span padding="10"><h:outputText value="#{purchase.state}"/> </span>
+                    </p>
+                </ui:repeat>
+        </h:form>
+    </ui:define>
 </ui:composition>
-</html>

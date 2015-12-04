@@ -13,6 +13,10 @@ public class PurchaseDTO implements Serializable {
 	private Timestamp datetime;
 
 	private String state;
+	
+	private String paymentid;
+	    
+	private String correlationid;
 
 	public PurchaseDTO() {
 	}
@@ -48,5 +52,21 @@ public class PurchaseDTO implements Serializable {
 	public void setState(String state) {
 		this.state = state;
 	}
+
+    public String getPaymentid() {
+        return paymentid;
+    }
+
+    public void setPaymentid(String paymentid) {
+        this.paymentid = paymentid;
+    }
+
+    public String getCorrelationid() {
+        return correlationid;
+    }
+
+    public void setCorrelationid(String correlationid) {
+        this.correlationid = correlationid;
+    }
 
 }

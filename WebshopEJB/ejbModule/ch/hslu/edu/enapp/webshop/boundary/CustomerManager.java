@@ -9,6 +9,7 @@ import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 import ch.hslu.edu.enapp.webshop.entity.Customer;
 import ch.hslu.edu.enapp.webshop.entity.Usergroup;
 import ch.hslu.edu.enapp.webshop.entity.UsergroupPK;
+import ch.hslu.edu.enapp.webshop.enappdaemon.SalesOrderDaemon;
 
 import javax.ejb.Local;
 import javax.ejb.Remote;
@@ -36,6 +37,9 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
     EntityManager entityManager;
     @Inject
     CustomerConverter customerConverter;
+    
+    @Inject
+    EnappQueueHandler enappQueueHandler;
 
     /**
      * {@inheritDoc}
@@ -120,4 +124,16 @@ public class CustomerManager implements CustomerServiceRemote, CustomerServiceLo
         return customers;
     }
 
+    @Override
+    public void setDynNavIdFromJMS(String username, String correlationId) {
+        SalesOrderDaemon salesOrder = enappQueueHandler.getOrderState(correlationId);
+        
+        System.out.println("Username: " + username + "Correlation-ID: " + correlationId);
+        System.out.println("DynNav-Userid: " + salesOrder.getExternalCustomerId());
+        
+        CustomerDTO customer = getUser(username);
+        customer.setDynNavUserId(salesOrder.getExternalCustomerId());
+        
+        updateUser(customer);
+    }
 }

@@ -2,8 +2,10 @@ package ch.hslu.edu.enapp.webshop.control;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
+import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
+import javax.jms.TextMessage;
 
 /**
  * Message-Driven Bean implementation class for: EnappReceiver
@@ -27,7 +29,12 @@ public class EnappReceiver implements MessageListener {
     public void onMessage(Message message) {
         // TODO Auto-generated method stub
         
-        System.out.println(message);
+        try {
+            System.out.println(((TextMessage) message).getText());
+        } catch (JMSException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }

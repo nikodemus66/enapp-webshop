@@ -6,13 +6,15 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal;
+import ch.hslu.edu.enapp.webshop.common.PurchaseManagerLocal;
 import ch.hslu.edu.enapp.webshop.common.dto.CustomerDTO;
 
 @Named
 @SessionScoped
 public class AccountMBean implements Serializable {
     @Inject
-    ch.hslu.edu.enapp.webshop.common.CustomerServiceLocal customerService;
+    CustomerServiceLocal customerService;
     
     private static final long serialVersionUID = 1L;
     

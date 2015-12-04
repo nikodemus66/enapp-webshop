@@ -11,7 +11,11 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Purchase.findAll", query="SELECT p FROM Purchase p")
+@NamedQueries({
+    @NamedQuery(name="Purchase.findAll", query="SELECT p FROM Purchase p"),
+    @NamedQuery(name = "Purchase.getPurchaseByCustomerid", query = "SELECT p FROM Purchase p WHERE p.customerBean.customerid = :customerid"),
+    @NamedQuery(name = "Purchase.getPurchaseByCorrelationid", query = "SELECT p FROM Purchase p WHERE p.correlationid = :correlationid"),
+})
 public class Purchase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,6 +29,8 @@ public class Purchase implements Serializable {
 	private String state;
 	
 	private String paymentid;
+	
+	private String correlationid;
 
 	//bi-directional many-to-one association to Customer
 	@ManyToOne
@@ -98,6 +104,14 @@ public class Purchase implements Serializable {
 
     public void setPaymentid(String paymentid) {
         this.paymentid = paymentid;
+    }
+
+    public String getCorrelationid() {
+        return correlationid;
+    }
+
+    public void setCorrelationid(String correlationid) {
+        this.correlationid = correlationid;
     }
 
 }

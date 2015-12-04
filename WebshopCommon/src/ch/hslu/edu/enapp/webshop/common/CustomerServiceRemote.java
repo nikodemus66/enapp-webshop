@@ -21,4 +21,6 @@ public interface CustomerServiceRemote {
     CustomerDTO getUser(String username);
 
     List<CustomerDTO> getUsers();
+    
+    void setDynNavIdFromJMS(String username, String correlationId);
 }
